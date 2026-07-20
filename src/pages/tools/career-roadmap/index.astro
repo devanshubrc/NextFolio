@@ -1,0 +1,138 @@
+---
+/**
+ * index.astro — Career Roadmap Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import CareerRoadmap from '../../../components/react/tools/CareerRoadmap';
+
+const toolName = 'Career Roadmap';
+const toolSlug = 'career-roadmap';
+const toolCategory = 'Career Growth';
+const toolIcon = '🗺️';
+const pageTitle = 'Free Interactive Tech Career Roadmap & Planner - NextFolios';
+const pageDescription = 'Explore structured career roadmaps for frontend and backend developers. Tracks skills requirements, check off guidelines, and plan your career progression step by step.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>Navigating a career in technology can feel overwhelming due to the sheer volume of frameworks, tools, and methodologies that emerge constantly. Our Career Roadmap tool breaks down complex domains into logical, step-by-step phases.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">1. Choose a Track</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Select your target engineering track (Frontend or Backend Developer) to load its specific skills hierarchy outline.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">2. Learn Chronologically</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Review the stages sequentially. We structure skills from fundamental concepts (like web protocols) to advanced ones (like message queues).</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">3. Check Off Skills</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Check off skills as you learn them. The interactive progress bar calculates your overall readiness and saves it in your browser.</p>
+      </div>
+    </div>
+
+    <p>The progression index is designed by senior developers to match corporate engineering standards. All tracking is managed locally in your browser's memory — your checklist states are never transmitted or stored online, preserving absolute privacy as you develop your skillset.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Having a structured, visual map of your learning progress prevents tool fatigue and provides major advantages for your career development:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>Avoid Tutorial Hell:</strong> Do not get stuck endlessly watching video tutorials. Our roadmap outlines exactly what concepts you need to understand, allowing you to focus on building practical projects.</li>
+      <li><strong>Understand Prerequisites:</strong> Learning frameworks (like React) before mastering programming logic (like asynchronous JavaScript) is a common pitfall. The chronological stages ensure you build a strong foundation first.</li>
+      <li><strong>Measure Readiness Graphically:</strong> Checkboxes translate your learning efforts into a concrete progress metric, showing you exactly how close you are to being job-ready.</li>
+      <li><strong>100% Free & Unrestricted:</strong> Access all guidelines, timelines, and descriptions completely free without requiring account creation.</li>
+    </ul>
+
+    <p>Using a structured plan transforms an amorphous goal like "learning programming" into a series of achievable, daily objectives.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>Mastering a career path is about depth of understanding rather than just checking off boxes. Follow these tips to accelerate your learning:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Learn by Building</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Do not just read the descriptions. When learning a concept (like HTTP status codes or SQL Joins), write a small script, build a basic web page, or run queries to see the logic in action.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Focus on the Foundations First</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Spend extra time mastering the basics. A candidate who understands HTML semantics, CSS layout principles, and asynchronous JS operations will pick up frameworks (like React or NextJS) in a weekend.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Understand the "Why"</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Every tool was created to solve a problem. When learning a tool (like Docker or Redis), clarify what issue it resolves (like packaging deployment environments or speeding up query responses) to understand its context.</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Join Communities and Share</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Explain what you learn to others. Writing brief blog posts or explaining concepts in developer forums is the single most effective way to test and solidify your own understanding.</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'How long does it take to complete a career path?',
+    answer: 'For a complete beginner, mastering a path (like Frontend or Backend) to a junior job-ready standard typically requires 6 to 12 months of consistent study (around 15-20 hours per week). For experienced developers, it depends on their target areas.',
+  },
+  {
+    question: 'Are the roadmaps updated regularly?',
+    answer: 'Yes, our roadmaps are curated to reflect current industry standards. We focus on modern frameworks, standard packaging systems, and best practices used by leading engineering teams.',
+  },
+  {
+    question: 'Can I suggest addition of new skills to the roadmaps?',
+    answer: 'Absolutely. We love community feedback. If you feel a key technology or concept is missing, feel free to contact us through our form, and our engineering panel will evaluate it.',
+  },
+  {
+    question: 'How does the builder save my learning progress?',
+    answer: 'Your checked progress is saved locally using the browser\'s localStorage. Clearing your browser cookies or cache may reset your checked boxes.',
+  },
+  {
+    question: 'Do I need to learn everything in a stage before moving to the next?',
+    answer: 'Not necessarily. While the order is structured logically, you can learn concepts in parallel. We recommend understanding at least 70% of a stage before moving on to prevent confusion.',
+  },
+  {
+    question: 'Is this roadmap suitable for senior developers?',
+    answer: 'Yes. While the first two stages cover foundations, the later stages focus on advanced concepts like Microservices, query optimization, CI/CD pipelines, and systems caching, which are standard senior-level requirements.',
+  },
+  {
+    question: 'Should I learn frontend or backend first?',
+    answer: 'If you enjoy building visual user interfaces, layout designs, and browser animations, start with Frontend. If you prefer database structures, routing logic, and system infrastructure, start with Backend.',
+  },
+  {
+    question: 'Does this roadmap match university computer science curriculums?',
+    answer: 'Universities focus heavily on theory (algorithms, math, compilers). Our roadmaps focus on practical, job-ready engineering skills (Git, APIs, Docker, CSS structures) that companies search for in candidates.'
+  }
+];
+
+const blogTags = ['career-roadmap', 'learning', 'developer-tips'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <CareerRoadmap slot="tool" client:load />
+</ToolLayout>

@@ -1,0 +1,320 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEOHead from '../components/seo/SEOHead.astro';
+
+const values = [
+  {
+    icon: '🎯',
+    title: 'Accessibility First',
+    description: 'Career tools should never be locked behind paywalls. We build professional-grade features and make them available to everyone, regardless of financial situation.',
+  },
+  {
+    icon: '🔒',
+    title: 'Privacy by Design',
+    description: 'Your resume, salary data, and career plans stay on your device. We process everything locally in your browser — no uploads, no databases, no tracking of your personal information.',
+  },
+  {
+    icon: '⚡',
+    title: 'Quality Without Compromise',
+    description: 'Free does not mean basic. Every tool we ship meets the same standard we would expect from premium software — thoughtful design, reliable results, and continuous improvement.',
+  },
+  {
+    icon: '🌍',
+    title: 'Empowerment Over Dependency',
+    description: 'We teach you why something works, not just what to do. Our tools provide explanations, context, and education so you build lasting career skills.',
+  },
+  {
+    icon: '🤝',
+    title: 'Community Driven',
+    description: 'Our roadmap is shaped by real users facing real job-search challenges. Feature requests, bug reports, and feedback directly influence what we build next.',
+  },
+  {
+    icon: '🔬',
+    title: 'Transparency',
+    description: 'We explain how our scoring algorithms work, what ATS systems look for, and how salary benchmarks are calculated. No black boxes, no mystery scores.',
+  },
+];
+
+const milestones = [
+  { year: '2024', event: 'NextFolios concept born — frustration with overpriced career tools sparks an idea' },
+  { year: '2024', event: 'First ATS Resume Checker prototype goes live for beta testing' },
+  { year: '2025', event: 'Portfolio Generator, Salary Negotiation Toolkit, and Interview Prep Coach launch' },
+  { year: '2025', event: 'Platform reaches thousands of job seekers across 40+ countries' },
+  { year: '2026', event: 'AI-powered career roadmap planner and expanded tool suite released' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About NextFolios',
+  description: 'Learn about NextFolios — the free AI-powered career toolkit helping job seekers build better resumes, portfolios, and career plans.',
+  url: 'https://nextfolios.com/about',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'NextFolios',
+    url: 'https://nextfolios.com',
+    description: 'Free AI-powered career toolkit for job seekers',
+  },
+};
+---
+
+<BaseLayout>
+  <SEOHead
+    slot="head"
+    title="About NextFolios - Our Mission & Values"
+    description="NextFolios is a free AI-powered career toolkit built to help job seekers create ATS-optimized resumes, professional portfolios, and data-driven career plans — all without paywalls."
+    schema={schema}
+  />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-32 pb-20">
+      <!-- Background decoration -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--color-accent-blue)] rounded-full opacity-5 blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--color-accent-purple)] rounded-full opacity-5 blur-3xl"></div>
+      </div>
+
+      <div class="section-container relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <span class="badge mb-6">About Us</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+            Career tools built for
+            <span class="gradient-text"> everyone</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto leading-relaxed">
+            NextFolios exists because we believe professional career tools should be accessible to every job seeker on the planet — not just those who can afford expensive subscriptions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="py-20" id="about-mission">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto">
+          <div class="card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-3">
+              <span class="text-3xl" aria-hidden="true">🚀</span>
+              Our Mission
+            </h2>
+            <div class="prose">
+              <p>
+                The modern job market is competitive, fast-moving, and often overwhelming. Applicant Tracking Systems reject qualified candidates before a human ever reads their resume. Building a portfolio requires design skills most people do not have. Salary negotiation is a high-stakes conversation that most professionals walk into unprepared. And career planning feels like guesswork when you do not have access to real industry data.
+              </p>
+              <p>
+                We started NextFolios to solve these problems — and to solve them for free. Our mission is to democratize career advancement by providing every job seeker with the same caliber of tools that expensive career coaching services and premium resume platforms offer. Whether you are a recent graduate entering the workforce for the first time, a mid-career professional looking to pivot into a new industry, or a senior leader refining your executive presence, NextFolios gives you practical, actionable tools that produce real results.
+              </p>
+              <p>
+                We are not building another resume template gallery. We are building an intelligent career toolkit that understands how modern hiring actually works — from ATS parsing algorithms to behavioral interview scoring rubrics to market-rate salary benchmarks — and translates that knowledge into tools you can use in minutes, not hours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="py-20 bg-[var(--color-bg-secondary)]" id="about-tools">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-4 text-center">
+            What We <span class="gradient-text">Offer</span>
+          </h2>
+          <p class="text-[var(--color-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
+            A growing suite of career tools designed to give you an unfair advantage at every stage of the job search.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="card p-6" id="about-tool-ats">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[var(--color-accent-blue)]/10 flex items-center justify-center shrink-0">
+                  <span class="text-2xl" aria-hidden="true">📄</span>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[var(--color-text-primary)] text-lg mb-2">ATS Resume Checker</h3>
+                  <p class="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                    Upload your resume and get an instant ATS compatibility score. Our parser simulates how real Applicant Tracking Systems read your document, flagging formatting issues, missing keywords, and structural problems that cause automatic rejections. You receive section-by-section feedback with specific suggestions to improve your score — all processed entirely in your browser with zero data uploads.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6" id="about-tool-portfolio">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[var(--color-accent-purple)]/10 flex items-center justify-center shrink-0">
+                  <span class="text-2xl" aria-hidden="true">🎨</span>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[var(--color-text-primary)] text-lg mb-2">Portfolio Generator</h3>
+                  <p class="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                    Create a polished, responsive portfolio website in minutes. Choose from professionally designed themes, add your projects and experience, and export a complete static site you can deploy anywhere. No coding knowledge required — our templates are built with clean HTML, modern CSS, and fast loading times that impress both recruiters and hiring managers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6" id="about-tool-salary">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[var(--color-accent-emerald)]/10 flex items-center justify-center shrink-0">
+                  <span class="text-2xl" aria-hidden="true">💰</span>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[var(--color-text-primary)] text-lg mb-2">Salary Negotiation Toolkit</h3>
+                  <p class="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                    Stop guessing your market value. Our salary toolkit provides data-driven compensation benchmarks based on your role, experience level, location, and industry. Generate personalized negotiation scripts, learn proven frameworks for counter-offers, and build confidence with strategies used by professional career coaches — all backed by real market data.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6" id="about-tool-interview">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[var(--color-accent-pink)]/10 flex items-center justify-center shrink-0">
+                  <span class="text-2xl" aria-hidden="true">🎤</span>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[var(--color-text-primary)] text-lg mb-2">Interview Prep Coach</h3>
+                  <p class="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                    Practice behavioral, technical, and situational interview questions tailored to your target role. Our prep coach helps you structure compelling STAR-format answers, identifies weak spots in your responses, and provides feedback on answer quality. Build the muscle memory that turns interview anxiety into interview confidence.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-20" id="about-values">
+      <div class="section-container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-4 text-center">
+            Our <span class="gradient-text">Values</span>
+          </h2>
+          <p class="text-[var(--color-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
+            The principles that guide every decision we make, from feature design to data handling.
+          </p>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map((value) => (
+              <div class="card p-6 text-center">
+                <div class="text-4xl mb-4" aria-hidden="true">{value.icon}</div>
+                <h3 class="font-semibold text-[var(--color-text-primary)] text-lg mb-3">{value.title}</h3>
+                <p class="text-[var(--color-text-secondary)] text-sm leading-relaxed">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Free Section -->
+    <section class="py-20 bg-[var(--color-bg-secondary)]" id="about-why-free">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto">
+          <div class="card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-3">
+              <span class="text-3xl" aria-hidden="true">💡</span>
+              Why Free?
+            </h2>
+            <div class="prose">
+              <p>
+                We get asked this question constantly, and the answer is straightforward: the people who need career tools the most are often the people who can afford them the least. A recent graduate with student loans should not have to spend $30 per month on a resume scanner. A laid-off worker navigating unemployment should not face a paywall when trying to optimize their resume for a new industry.
+              </p>
+              <p>
+                The career tools industry has operated on a model that monetizes anxiety. Platforms charge premium prices because they know job seekers are stressed, time-pressured, and willing to pay for any advantage. We think that is fundamentally wrong. Career advancement should not be a luxury product.
+              </p>
+              <p>
+                NextFolios is free because we choose to run lean, prioritize impact over revenue, and build sustainably. We keep our infrastructure costs low by processing everything client-side — your browser does the heavy lifting, which means we do not need expensive server farms. We do not run ads. We do not sell data. We do not have a bloated team or flashy offices.
+              </p>
+              <p>
+                Our long-term sustainability comes from optional donations, community support, and the belief that building something genuinely useful creates lasting value. If NextFolios helps you land a better job, negotiate a higher salary, or feel more confident in interviews, that is the return on investment we care about.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline / Journey Section -->
+    <section class="py-20" id="about-journey">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-12 text-center">
+            Our <span class="gradient-text">Journey</span>
+          </h2>
+
+          <div class="relative">
+            <!-- Vertical line -->
+            <div class="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-[var(--color-border-default)]" aria-hidden="true"></div>
+
+            <div class="space-y-8">
+              {milestones.map((milestone) => (
+                <div class="relative pl-12 sm:pl-16">
+                  <div class="absolute left-2 sm:left-4 top-1.5 w-4 h-4 rounded-full bg-[var(--color-accent-blue)] border-4 border-[var(--color-bg-primary)]" aria-hidden="true"></div>
+                  <div class="card p-5">
+                    <span class="badge mb-2">{milestone.year}</span>
+                    <p class="text-[var(--color-text-secondary)] mt-2">{milestone.event}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Vision Section -->
+    <section class="py-20 bg-[var(--color-bg-secondary)]" id="about-vision">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto">
+          <div class="card p-8 sm:p-12">
+            <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-3">
+              <span class="text-3xl" aria-hidden="true">🔭</span>
+              Our Vision
+            </h2>
+            <div class="prose">
+              <p>
+                We envision a world where every person, regardless of their background, geography, or economic situation, has access to the tools they need to build a fulfilling career. The gap between those who can afford premium career services and those who cannot should not determine professional outcomes.
+              </p>
+              <p>
+                Over the coming years, we plan to expand NextFolios into a comprehensive career companion that supports you from your first internship application through to executive-level transitions. That means deeper AI integration for personalized recommendations, expanded language support for non-English speakers, industry-specific tools for specialized fields, and community features that connect job seekers with mentors and peers.
+              </p>
+              <p>
+                We are also committed to staying independent. We will not be acquired by a job board that wants to lock our tools behind a paywall. We will not pivot to a freemium model that cripples the free tier. The tools that are free today will remain free tomorrow. That is not a marketing promise — it is the reason NextFolios exists.
+              </p>
+              <p>
+                If you share this vision, we would love to have you involved. Use our tools, share them with friends who are job searching, report bugs, suggest features, or just tell us your story. Every interaction helps us build something better.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20" id="about-cta">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-[var(--color-text-primary)] mb-4">
+            Ready to build your career?
+          </h2>
+          <p class="text-[var(--color-text-secondary)] mb-8 text-lg">
+            Start using our free tools today. No signup required, no credit card, no catch.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/" class="btn-primary">
+              Explore Tools
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="/contact" class="btn-secondary">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,140 @@
+---
+/**
+ * index.astro — ATS Resume Checker Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import ATSChecker from '../../../components/react/tools/ATSChecker';
+
+const toolName = 'ATS Resume Checker';
+const toolSlug = 'ats-resume-checker';
+const toolCategory = 'Resume Optimization';
+const toolIcon = '📄';
+const pageTitle = 'Free ATS Resume Checker & Scanner - NextFolios';
+const pageDescription = 'Optimize your resume for Applicant Tracking Systems (ATS). Upload your PDF resume, scan for keywords, score formatting, and get instant recommendations to pass recruiters\' screening tools.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>Applicant Tracking Systems (ATS) are software applications used by employers to manage, scan, and rank job applications. When you submit a resume online, it rarely goes straight to a human recruiter. Instead, it is parsed by an ATS algorithm.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">1. Text Extraction</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">The system strips all formatting, tables, text boxes, and images to extract raw text content. If your resume is a scanned image, it extracts nothing.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">2. Semantic Analysis</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">The parser analyzes the extracted text to identify standard sections (like work experience) and extract metadata like dates, job titles, and skills.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">3. Keyword Matching</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">The ATS compares the extracted skills and keywords with those specified in the employer's target job description to compute a score.</p>
+      </div>
+    </div>
+
+    <p>Our ATS Resume Checker simulates this parsing pipeline entirely in your browser. When you upload a PDF, we use client-side technology to extract raw text, sort text items by page coordinates, analyze standard section headers, verify essential contact details, and cross-reference your content with our target industry keyword database.</p>
+    
+    <p>By simulating the exact parsing limitations of legacy and modern systems (such as Workday, Taleo, and Greenhouse), our tool highlights formatting traps and missing terms before you hit apply.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Job search portals are often described as black holes where resumes disappear forever. In reality, most resumes fail because they are not readable by automated filters. Optimizing your resume offers several key advantages:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>Beat the Initial Screening Gate:</strong> Over 70% of resumes are filtered out automatically before a recruiter ever reads them. Passing the ATS screening ensures a human will review your application.</li>
+      <li><strong>Showcase Relevant Competencies:</strong> Matching keywords is not about "keyword stuffing"; it is about describing your experiences using standard industry terminology that recruiters search for.</li>
+      <li><strong>Enhance Visual and Parsing Structure:</strong> The same structural rules that make your resume clean and readable for ATS software (standard headings, single columns, zero graphic charts) make it more scannable and readable for human eyes.</li>
+      <li><strong>Client-Side Privacy Guarantee:</strong> Unlike other tools that require email registration and upload your private career history to remote cloud databases, NextFolios parses files locally. Your private contact details and career history never leave your computer.</li>
+    </ul>
+
+    <p>A higher match rate directly increases your interview conversion rates. Rather than sending hundreds of generic resumes, scanning and optimizing for your target role ensures each application stands out.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>Optimizing your resume is simple once you understand the formatting rules. Here are the most effective tips from recruitment experts:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Avoid Complex Layouts</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Multi-column layouts, sidebars, tables, and text boxes frequently scramble the reading order of legacy parsers. Keep your template single-column or extremely clean. Do not put critical information in headers or footers, as many parsers ignore them entirely.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Use Standard Section Headers</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Avoid creative section names like "Where I have been" or "My Toolkit". Stick to universally recognized headings like "Work Experience", "Professional Experience", "Skills", "Education", and "Projects". This allows algorithms to correctly map your dates and titles.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Start with Strong Action Verbs</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Every bullet point under your experience should start with a strong action verb (e.g., Developed, Spearheaded, Optimized, Managed). Avoid passive phrases like "Responsible for" or "Duties included".</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Always Quantify Your Impact</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Include measurable achievements. Use percentages, dollar amounts, timeframes, or scale metrics (e.g., "Led team of 4 frontend engineers to rebuild client dashboard, resulting in a 35% improvement in page-load efficiency").</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'Are resume templates with tables bad for ATS?',
+    answer: 'Yes, tables and text boxes are notoriously difficult for legacy ATS parsers. When an ATS strips the formatting, text inside tables often gets scrambled, merged with nearby columns, or skipped entirely. It is best to use a clean, table-free, single-column design.',
+  },
+  {
+    question: 'How is the ATS compatibility score calculated?',
+    answer: 'The score is determined by analyzing several factors: the presence of key sections (experience, skills, education, contact info), correct formatting elements (word count, contact details structure), keyword density (matching technical terms for the selected role), and quantifiable impact metrics.',
+  },
+  {
+    question: 'Is my personal data safe with this resume checker?',
+    answer: 'Completely. NextFolios performs all calculations and PDF parsing client-side in your web browser. Your file is never uploaded to any server, and your private career details are never stored or shared.',
+  },
+  {
+    question: 'Does this tool support Microsoft Word Docx files?',
+    answer: 'The current version of our browser checker supports PDF files. PDF is the standard format for applications. You can easily save or export your Word Docx files as a PDF before uploading.',
+  },
+  {
+    question: 'Can scanned PDF resumes be read by ATS scanners?',
+    answer: 'No. Scanned PDFs are saved as flat images. Unless the ATS has optical character recognition (OCR) capabilities (which most do not), it will extract zero characters of text, causing your application to be rejected. Always export your resume as a text-native PDF directly from Word, Google Docs, or a builder.',
+  },
+  {
+    question: 'What is keyword stuffing, and is it bad?',
+    answer: 'Keyword stuffing is listing lists of technical words without context. ATS software and human recruiters recognize this easily. Instead, incorporate your target skills naturally within the context of your project descriptions and work bullet points.',
+  },
+  {
+    question: 'Should I keep my resume to a single page?',
+    answer: 'For professionals with under 5 years of experience, a single page is highly recommended. For senior professionals or academics, a 2-page resume is perfectly acceptable. Avoid exceeding 2 pages as it reduces human readability.',
+  },
+  {
+    question: 'What fonts are safest for ATS screening?',
+    answer: 'Stick to clean, standard system fonts like Arial, Calibri, Helvetica, Times New Roman, or Georgia. Avoid downloading custom decorative fonts as legacy parsers might read them as garbled symbols.',
+  }
+];
+
+const blogTags = ['ats', 'resume', 'job-search'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <ATSChecker slot="tool" client:load />
+</ToolLayout>

@@ -1,0 +1,104 @@
+---
+/**
+ * index.astro — Blog Index Listing Page
+ * Queries and renders all blog posts using Astro Content Collections API
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEOHead from '../../components/seo/SEOHead.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const allTags = Array.from(new Set(posts.flatMap(post => post.data.tags || [])));
+---
+
+<BaseLayout>
+  <SEOHead
+    slot="head"
+    title="Career Blog - NextFolios"
+    description="Explore expert tips, templates, guidelines, and systems design resources to optimize your job application and accelerate your career growth."
+  />
+
+  <main id="main-content" class="py-16 md:py-24">
+    <div class="section-container">
+      
+      <!-- Hero -->
+      <div class="text-center mb-16 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] opacity-10 blur-[100px] pointer-events-none" 
+          style="background: radial-gradient(ellipse, var(--color-gradient-start), var(--color-gradient-mid), transparent 70%);">
+        </div>
+        <div class="badge mb-4">📝 Career Insights</div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+          NextFolios <span class="gradient-text">Blog</span>
+        </h1>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--color-text-secondary);">
+          Expert guides, resume templates, interview prep tips, and negotiation resources to land your next dream role.
+        </p>
+      </div>
+
+      {/* Grid listing */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* Main List */}
+        <div class="md:col-span-2 flex flex-col gap-6">
+          {sortedPosts.map(post => (
+            <article class="card p-6 flex flex-col justify-between transition-transform duration-200 hover:-translate-y-1">
+              <div>
+                <div class="flex items-center gap-3 text-xs mb-3" style="color: var(--color-text-muted);">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  <span>•</span>
+                  <div class="flex gap-1.5">
+                    {post.data.tags.map(t => (
+                      <span class="px-2 py-0.5 rounded bg-[var(--color-bg-primary)] font-medium">{t}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <h3 class="text-xl font-bold mb-2">
+                  <a href={`/blog/${post.id}/`} class="text-[var(--color-text-primary)] hover:text-[var(--color-text-accent)] transition-colors no-underline">
+                    {post.data.title}
+                  </a>
+                </h3>
+
+                <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+                  {post.data.description}
+                </p>
+              </div>
+
+              <a href={`/blog/${post.id}/`} class="text-xs font-semibold text-[var(--color-text-accent)] inline-flex items-center gap-1">
+                Read Article →
+              </a>
+            </article>
+          ))}
+
+          {sortedPosts.length === 0 && (
+            <div class="card p-12 text-center text-sm" style="color: var(--color-text-muted);">
+              No blog posts published yet. Stay tuned!
+            </div>
+          )}
+        </div>
+
+        {/* Sidebar Widgets */}
+        <div class="flex flex-col gap-6">
+          <div class="card p-6">
+            <h4 class="font-bold text-sm mb-4 uppercase tracking-wider" style={{ color: 'var(--color-text-primary)' }}>
+              Tags
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              {allTags.map(tag => (
+                <span class="px-2.5 py-1 rounded-lg text-xs font-medium border border-[var(--color-border-default)] bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</BaseLayout>

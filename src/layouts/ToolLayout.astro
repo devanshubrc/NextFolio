@@ -1,0 +1,197 @@
+---
+/**
+ * ToolLayout.astro — Standardized layout for all tool pages
+ * Enforces consistent section order:
+ * Hero → Tool → How it Works → Benefits → Tips → FAQs → Related Tools → Blog Articles → CTA
+ */
+import BaseLayout from './BaseLayout.astro';
+import SEOHead from '../components/seo/SEOHead.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import ToolSchema from '../components/seo/ToolSchema.astro';
+import FAQ from '../components/seo/FAQ.astro';
+import RelatedTools from '../components/RelatedTools.astro';
+import RelatedBlogPosts from '../components/RelatedBlogPosts.astro';
+
+interface Props {
+  /* SEO */
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  /* Tool metadata */
+  toolName: string;
+  toolSlug: string;
+  toolCategory: string;
+  toolIcon: string;
+  /* Content sections */
+  howItWorks: string;     // HTML content
+  benefits: string;       // HTML content
+  tips: string;           // HTML content
+  faqItems: { question: string; answer: string }[];
+  /* Related content */
+  blogTags?: string[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  toolName,
+  toolSlug,
+  toolCategory,
+  toolIcon,
+  howItWorks,
+  benefits,
+  tips,
+  faqItems,
+  blogTags = [],
+} = Astro.props;
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Tools', href: '/#tools' },
+  { label: toolName },
+];
+
+const toolSchemaData = {
+  name: toolName,
+  description: description,
+  url: `https://nextfolios.com/tools/${toolSlug}/`,
+  category: toolCategory,
+};
+---
+<BaseLayout>
+  <SEOHead
+    slot="head"
+    title={title}
+    description={description}
+    canonical={canonical}
+    ogImage={ogImage}
+    faq={faqItems.map(item => ({ q: item.question, a: item.answer }))}
+  />
+  
+  <main id="main-content">
+    <!-- Breadcrumb -->
+    <div class="section-container pt-6">
+      <Breadcrumb items={breadcrumbItems} />
+    </div>
+    
+    <!-- 1. Hero Section -->
+    <section class="relative overflow-hidden py-16 md:py-24" aria-labelledby="tool-title">
+      <!-- Background gradient orb -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] opacity-20 blur-[120px] pointer-events-none" 
+        style="background: radial-gradient(ellipse, var(--color-gradient-start), var(--color-gradient-mid), transparent 70%);">
+      </div>
+      
+      <div class="section-container relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 badge mb-6">
+          <span class="text-lg">{toolIcon}</span>
+          <span>{toolCategory}</span>
+        </div>
+        
+        <h1 id="tool-title" class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+          <span class="gradient-text">{toolName}</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl max-w-2xl mx-auto" style="color: var(--color-text-secondary);">
+          {description}
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. Tool Widget (interactive React component) -->
+    <section class="py-8 md:py-12" aria-label={`${toolName} Tool`}>
+      <div class="section-container">
+        <div class="card p-6 md:p-8 lg:p-10">
+          <slot name="tool" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. How it Works -->
+    <section class="py-12 md:py-16" aria-labelledby="how-it-works" style="background: var(--color-bg-secondary);">
+      <div class="section-container">
+        <h2 id="how-it-works" class="text-2xl md:text-3xl font-bold mb-8 text-center" style="color: var(--color-text-primary);">
+          How It Works
+        </h2>
+        <div class="prose max-w-3xl mx-auto" set:html={howItWorks} />
+      </div>
+    </section>
+
+    <!-- 4. Benefits -->
+    <section class="py-12 md:py-16" aria-labelledby="benefits">
+      <div class="section-container">
+        <h2 id="benefits" class="text-2xl md:text-3xl font-bold mb-8 text-center" style="color: var(--color-text-primary);">
+          Benefits
+        </h2>
+        <div class="prose max-w-3xl mx-auto" set:html={benefits} />
+      </div>
+    </section>
+
+    <!-- 5. Tips -->
+    <section class="py-12 md:py-16" aria-labelledby="tips" style="background: var(--color-bg-secondary);">
+      <div class="section-container">
+        <h2 id="tips" class="text-2xl md:text-3xl font-bold mb-8 text-center" style="color: var(--color-text-primary);">
+          Tips & Best Practices
+        </h2>
+        <div class="prose max-w-3xl mx-auto" set:html={tips} />
+      </div>
+    </section>
+
+    <!-- 6. FAQs -->
+    <section class="py-12 md:py-16" aria-labelledby="faqs">
+      <div class="section-container max-w-3xl mx-auto">
+        <FAQ items={faqItems} />
+      </div>
+    </section>
+
+    <!-- 7. Related Tools -->
+    <section class="py-12 md:py-16" aria-labelledby="related-tools" style="background: var(--color-bg-secondary);">
+      <div class="section-container">
+        <h2 id="related-tools" class="text-2xl md:text-3xl font-bold mb-8 text-center" style="color: var(--color-text-primary);">
+          Related Tools
+        </h2>
+        <RelatedTools currentSlug={toolSlug} />
+      </div>
+    </section>
+
+    <!-- 8. Blog Articles -->
+    <section class="py-12 md:py-16" aria-labelledby="related-articles">
+      <div class="section-container">
+        <h2 id="related-articles" class="text-2xl md:text-3xl font-bold mb-8 text-center" style="color: var(--color-text-primary);">
+          Related Articles
+        </h2>
+        <RelatedBlogPosts tags={blogTags} />
+      </div>
+    </section>
+
+    <!-- 9. CTA -->
+    <section class="py-16 md:py-24 text-center" style="background: var(--color-bg-secondary);">
+      <div class="section-container">
+        <div class="relative overflow-hidden rounded-2xl p-8 md:p-12" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));">
+          <div class="absolute inset-0 opacity-30" style="background: radial-gradient(ellipse at top right, var(--color-gradient-start), transparent 60%);"></div>
+          <div class="relative z-10">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--color-text-primary);">
+              Ready to Boost Your Career?
+            </h2>
+            <p class="text-lg mb-8" style="color: var(--color-text-secondary);">
+              Explore all our free career tools and take the next step in your professional journey.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+              <a href={`/tools/${toolSlug}/`} class="btn-primary">
+                Try {toolName} Now →
+              </a>
+              <a href="/#tools" class="btn-secondary">
+                Browse All Tools
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Tool Schema -->
+  <ToolSchema {...toolSchemaData} />
+</BaseLayout>

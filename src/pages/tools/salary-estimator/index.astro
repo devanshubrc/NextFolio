@@ -1,0 +1,138 @@
+---
+/**
+ * index.astro — Salary Estimator Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import SalaryEstimator from '../../../components/react/tools/SalaryEstimator';
+
+const toolName = 'Salary Estimator';
+const toolSlug = 'salary-estimator';
+const toolCategory = 'Salary Negotiation';
+const toolIcon = '💰';
+const pageTitle = 'Free Tech Salary Estimator & Negotiation Tool - NextFolios';
+const pageDescription = 'Estimate average salaries for software engineers, product managers, devops, and designers globally. Generate customized, data-backed salary negotiation scripts instantly.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>Understanding your market value is the most important step before starting salary discussions. Our Salary Estimator and Negotiation script generator provides transparent, location-specific benchmarks for top tech positions.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">1. Select Target Parameters</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Choose your target engineering, product, or design role, along with your career experience tier (Junior, Mid, Senior, Lead).</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">2. Research Global Rates</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Review the average gross base compensation ranges for major global tech hubs, including the US, UK, Canada, Germany, and India.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">3. Build Negotiation Scripts</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Generate customized, professional negotiation response scripts tailored for counter-offering, requesting raises, or trading for benefits.</p>
+      </div>
+    </div>
+
+    <p>Our data relies on aggregated benchmarks compiled from government labor stats, verified industry surveys, and anonymous self-reported database metrics. To keep costs low and preserve client privacy, all lookups occur locally in the browser — your target roles and salary parameters are never sent to remote tracking servers.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Entering a salary negotiation without data is leaving money on the table. Having access to clear salary benchmarks offers several advantages:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>Avoid Under-Pricing Yourself:</strong> Many candidates lose thousands of dollars annually simply because they request numbers that are below the standard budget assigned for the role.</li>
+      <li><strong>Anchor Discussions with Data:</strong> Instead of saying "I need more money," present the benchmarks directly: "My research shows the market rate for a Senior Frontend Developer in London is around £80,000." This shifts the tone to a professional discussion.</li>
+      <li><strong>Custom Scripts at Hand:</strong> Typing emails for counteroffers can feel intimidating. Our instant response scripts give you professional, tried-and-true phrasing for immediate copy-pasting.</li>
+      <li><strong>100% Free & Open:</strong> NextFolios provides this data completely free, with no account registration walls or premium subscription boundaries.</li>
+    </ul>
+
+    <p>A higher base salary compounds over time, directly impacting your lifetime earnings, retirement contributions, and future bonus structures.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>Negotiating compensation is a normal, professional part of the recruitment process. Follow these guidelines to achieve the best results:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Never Give the First Number</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">If a recruiter asks for your salary expectations, try to defer: "I would love to learn more about the complete responsibilities of the role and the total package structure before aligning on a specific number. What range do you have budgeted for this position?"</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Show Value Before Asking</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">When asking for a raise internally, make a list of your achievements from the past year. Focus on optimizations, page speed gains, revenue-generating features, or metrics that show you have already exceeded your job description.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Consider the Total Package</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">If the base salary budget is fixed, negotiate for secondary perks. Extra paid time off (PTO), flexible work schedules, educational budgets, or signing bonuses can bridge the gap and add significant lifestyle value.</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Keep the Tone Collaborative</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Negotiation is not a conflict; it is a partnership. Keep your communications polite, professional, and appreciative. Emphasize that you want to find a mutually beneficial setup to join long term.</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'How accurate is this salary data?',
+    answer: 'The numbers represent gross annual base salaries (excluding bonuses, equity, or health benefits) averaged across top tech hubs. They are updated periodically and serve as directionally accurate benchmarks for market value.',
+  },
+  {
+    question: 'Do employers expect candidates to negotiate?',
+    answer: 'Yes. Most employers budget a 5% to 15% buffer above their initial offer. They expect professional candidates to counter, and rarely rescind offers simply because a candidate politely asks for a market-rate adjustment.',
+  },
+  {
+    question: 'What if a company says they have strict budget limits?',
+    answer: 'If the base salary cannot be increased, negotiate for alternative perks like an annual home-office setup stipend, remote work flexibility, stock options/equity grants, or a guaranteed salary review in 6 months.',
+  },
+  {
+    question: 'Can I negotiate a salary for an entry-level position?',
+    answer: 'Yes, but keep it modest and back it up with data. For entry-level roles, you have less leverage, so emphasize any specialized internships, technical projects, or university honors that show you will ramp up quickly.',
+  },
+  {
+    question: 'Should I disclose my current salary to recruiters?',
+    answer: 'No. In fact, sharing your current salary is legally banned in many US states and regions. Sharing it can lock you into a low offer. Focus instead on the market rate for the target role: "I am looking for a package in the range of..."',
+  },
+  {
+    question: 'How do I use the negotiation scripts?',
+    answer: 'Select the negotiation tab (Counter Offer, Ask for Raise, Benefits & Perks) inside our estimator panel. Copy the generated template, customize the bracketed details (like dates or specific company projects), and send it to your manager or recruiter.',
+  },
+  {
+    question: 'Are equity and stock options included in these numbers?',
+    answer: 'No. The benchmarks display the standard annual base salary. Stock options, RSUs, sign-on bonuses, and annual performance bonuses can add an additional 20% to 100% to your total compensation package depending on the company stage.',
+  },
+  {
+    question: 'How do salary ranges differ by experience tier?',
+    answer: 'Experience is generally categorized as Junior (0-2 years, foundation building), Mid-Level (2-5 years, autonomous delivery), Senior (5-10 years, technical scoping/mentoring), and Lead (10+ years, architecture/strategic execution).'
+  }
+];
+
+const blogTags = ['salary', 'negotiation', 'compensation'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <SalaryEstimator slot="tool" client:load />
+</ToolLayout>

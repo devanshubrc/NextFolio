@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEOHead from '../components/seo/SEOHead.astro';
+
+const lastUpdated = 'July 20, 2026';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy Policy — NextFolios',
+  description: 'NextFolios privacy policy explaining how we collect, use, and protect your information.',
+  url: 'https://nextfolios.com/privacy-policy',
+  dateModified: '2026-07-20',
+};
+---
+
+<BaseLayout>
+  <SEOHead
+    slot="head"
+    title="Privacy Policy - NextFolios"
+    description="Read the NextFolios privacy policy. Learn how we handle your data with a privacy-first, client-side approach — no tracking, no data sales, no server-side storage of personal information."
+    schema={schema}
+  />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-32 pb-12">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto text-center">
+          <span class="badge mb-6">Legal</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            Privacy <span class="gradient-text">Policy</span>
+          </h1>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Last updated: {lastUpdated}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="py-16" id="privacy-content">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto">
+          <article class="prose">
+
+            <p>
+              NextFolios ("we," "our," or "us") operates the website located at <a href="https://nextfolios.com">https://nextfolios.com</a> (the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our tools. We are committed to protecting your privacy and being transparent about our data practices. Please read this policy carefully. By using NextFolios, you agree to the terms described here.
+            </p>
+
+            <h2 id="privacy-information-we-collect">1. Information We Collect</h2>
+
+            <h3>1.1 Information You Provide Voluntarily</h3>
+            <p>
+              NextFolios is designed with a privacy-first architecture. The majority of our tools operate entirely within your web browser using client-side processing. When you use our ATS Resume Checker, Portfolio Generator, Salary Negotiation Toolkit, or Interview Prep Coach, your documents, personal data, and career information are processed locally on your device and are <strong>never transmitted to our servers</strong>.
+            </p>
+            <p>
+              If you choose to contact us via our contact form, you may voluntarily provide your name, email address, and message content. Our contact form stores submissions in your browser's local storage — this data is not sent to any external server through the form itself. If you email us directly, we receive the information contained in your email.
+            </p>
+
+            <h3>1.2 Information Collected Automatically</h3>
+            <p>
+              When you visit our website, we may automatically collect certain technical information through cookies and similar technologies. This may include:
+            </p>
+            <ul>
+              <li><strong>Device information:</strong> browser type and version, operating system, device type, and screen resolution.</li>
+              <li><strong>Usage data:</strong> pages visited, time spent on pages, referring URL, and navigation patterns within the site.</li>
+              <li><strong>Network information:</strong> IP address (which may be anonymized), approximate geographic location derived from IP address, and internet service provider.</li>
+            </ul>
+            <p>
+              We use this information solely for analytics purposes to understand how visitors interact with our website and to improve our services. We do not use this data to identify individual users or build personal profiles.
+            </p>
+
+            <h3>1.3 Information We Do Not Collect</h3>
+            <p>
+              We want to be explicit about what we do not collect:
+            </p>
+            <ul>
+              <li>We do <strong>not</strong> upload, store, or process your resume or CV files on our servers.</li>
+              <li>We do <strong>not</strong> collect salary information, compensation data, or financial details you enter into our tools.</li>
+              <li>We do <strong>not</strong> store your portfolio content, project descriptions, or professional history on our servers.</li>
+              <li>We do <strong>not</strong> record your interview practice responses or career planning data.</li>
+              <li>We do <strong>not</strong> require account creation, passwords, or authentication of any kind.</li>
+            </ul>
+
+            <h2 id="privacy-how-we-use">2. How We Use Your Information</h2>
+            <p>
+              The limited information we collect is used exclusively for the following purposes:
+            </p>
+            <ul>
+              <li><strong>Service improvement:</strong> Analyzing aggregate usage patterns to identify popular features, usability issues, and areas for improvement.</li>
+              <li><strong>Technical maintenance:</strong> Monitoring site performance, diagnosing errors, and ensuring system reliability and security.</li>
+              <li><strong>Communication:</strong> Responding to inquiries you send us via email or other direct contact channels.</li>
+              <li><strong>Legal compliance:</strong> Meeting legal obligations, resolving disputes, and enforcing our terms of service where necessary.</li>
+            </ul>
+            <p>
+              We do <strong>not</strong> sell, rent, trade, or otherwise share your personal information with third parties for their marketing or advertising purposes. We do not use your data for targeted advertising, profiling, or automated decision-making that produces legal or similarly significant effects.
+            </p>
+
+            <h2 id="privacy-cookies">3. Cookies and Local Storage</h2>
+            <p>
+              Our website uses a minimal set of cookies and browser storage technologies:
+            </p>
+            <ul>
+              <li><strong>Essential cookies:</strong> Required for basic website functionality, such as remembering your theme preference (dark or light mode). These cookies do not track you across websites.</li>
+              <li><strong>Analytics cookies:</strong> If analytics are enabled, we may use privacy-respecting analytics services that collect anonymized usage statistics. These cookies help us understand traffic patterns without identifying individual users.</li>
+              <li><strong>Local storage:</strong> Our tools use your browser's local storage (localStorage) to save your work in progress, preferences, and tool settings. This data remains entirely on your device and is never transmitted to our servers.</li>
+            </ul>
+            <p>
+              You can control cookie behavior through your browser settings. Most browsers allow you to refuse cookies, delete existing cookies, or receive notifications before cookies are set. Disabling essential cookies may affect certain website functionality. Clearing your browser's local storage will remove any saved tool data and preferences.
+            </p>
+
+            <h2 id="privacy-third-party">4. Third-Party Services</h2>
+            <p>
+              We may integrate the following types of third-party services into our website:
+            </p>
+            <ul>
+              <li><strong>Content delivery networks (CDNs):</strong> We use CDNs to serve fonts, stylesheets, and static assets efficiently. These services may log access requests that include your IP address.</li>
+              <li><strong>Analytics providers:</strong> If enabled, we use privacy-focused analytics tools that do not use cookies for cross-site tracking, do not collect personal data, and comply with GDPR without requiring user consent for analytics cookies.</li>
+              <li><strong>Hosting providers:</strong> Our website is hosted on infrastructure that logs standard web server access data, including IP addresses and user agent strings, for security and operational purposes.</li>
+            </ul>
+            <p>
+              We do not use social media tracking pixels, retargeting services, advertising networks, or any third-party service whose primary purpose is behavioral advertising or user profiling.
+            </p>
+
+            <h2 id="privacy-data-security">5. Data Security</h2>
+            <p>
+              We implement appropriate technical and organizational measures to protect the information we process. These measures include:
+            </p>
+            <ul>
+              <li>HTTPS encryption for all data transmitted between your browser and our servers.</li>
+              <li>Regular security audits and updates to our website infrastructure.</li>
+              <li>Client-side processing architecture that minimizes the data we handle server-side.</li>
+              <li>Access controls that limit who within our team can access server infrastructure and logs.</li>
+            </ul>
+            <p>
+              While we strive to protect your information, no method of electronic storage or internet transmission is completely secure. We cannot guarantee absolute security, but we are committed to following industry best practices and promptly addressing any security vulnerabilities.
+            </p>
+
+            <h2 id="privacy-your-rights">6. Your Rights</h2>
+            <p>
+              Depending on your jurisdiction, you may have certain rights regarding your personal data. We respect these rights regardless of where you are located:
+            </p>
+
+            <h3>6.1 Under the General Data Protection Regulation (GDPR)</h3>
+            <p>If you are a resident of the European Economic Area (EEA), you have the right to:</p>
+            <ul>
+              <li><strong>Access:</strong> Request copies of the personal data we hold about you.</li>
+              <li><strong>Rectification:</strong> Request correction of inaccurate personal data.</li>
+              <li><strong>Erasure:</strong> Request deletion of your personal data under certain circumstances.</li>
+              <li><strong>Restriction:</strong> Request that we restrict processing of your personal data.</li>
+              <li><strong>Portability:</strong> Request transfer of your personal data in a machine-readable format.</li>
+              <li><strong>Objection:</strong> Object to processing of your personal data for certain purposes.</li>
+            </ul>
+
+            <h3>6.2 Under the California Consumer Privacy Act (CCPA)</h3>
+            <p>If you are a California resident, you have the right to:</p>
+            <ul>
+              <li><strong>Know:</strong> Request disclosure of the categories and specific pieces of personal information we have collected.</li>
+              <li><strong>Delete:</strong> Request deletion of personal information we have collected from you.</li>
+              <li><strong>Opt-out:</strong> Opt out of the sale of personal information. Note: we do not sell personal information.</li>
+              <li><strong>Non-discrimination:</strong> Not be discriminated against for exercising your privacy rights.</li>
+            </ul>
+
+            <p>
+              Because NextFolios processes data primarily client-side, most of your data never reaches our servers. You can delete your locally stored data at any time by clearing your browser's local storage or using your browser's developer tools. For any data we hold server-side (such as email correspondence), contact us at <a href="mailto:privacy@nextfolios.com">privacy@nextfolios.com</a> to exercise your rights.
+            </p>
+
+            <h2 id="privacy-data-retention">7. Data Retention</h2>
+            <p>
+              We retain server-side data (access logs, email correspondence) only for as long as necessary to fulfill the purposes described in this policy. Specifically:
+            </p>
+            <ul>
+              <li><strong>Server access logs:</strong> Retained for up to 90 days, then automatically deleted.</li>
+              <li><strong>Email correspondence:</strong> Retained for as long as reasonably necessary to address your inquiry, then deleted within 12 months unless ongoing communication requires otherwise.</li>
+              <li><strong>Analytics data:</strong> Aggregate analytics data is retained indefinitely as it does not contain personally identifiable information.</li>
+            </ul>
+            <p>
+              Data stored in your browser's local storage persists until you manually clear it or uninstall your browser. We do not have access to or control over locally stored data.
+            </p>
+
+            <h2 id="privacy-childrens">8. Children's Privacy</h2>
+            <p>
+              NextFolios is not directed at children under the age of 13 (or the applicable age of consent in your jurisdiction). We do not knowingly collect personal information from children. If we discover that we have inadvertently collected data from a child, we will take immediate steps to delete that information. If you are a parent or guardian and believe your child has provided personal information to us, please contact us at <a href="mailto:privacy@nextfolios.com">privacy@nextfolios.com</a>.
+            </p>
+
+            <h2 id="privacy-international">9. International Data Transfers</h2>
+            <p>
+              Our website may be accessed from countries around the world. If you access NextFolios from outside the country where our servers are located, your information may be transferred across international borders. We ensure that any such transfers comply with applicable data protection laws, including implementing appropriate safeguards such as Standard Contractual Clauses where required.
+            </p>
+
+            <h2 id="privacy-changes">10. Changes to This Privacy Policy</h2>
+            <p>
+              We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, legal requirements, or other factors. When we make material changes, we will update the "Last updated" date at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information. Continued use of NextFolios after changes to this policy constitutes your acceptance of the updated terms.
+            </p>
+
+            <h2 id="privacy-contact">11. Contact Us</h2>
+            <p>
+              If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
+            </p>
+            <ul>
+              <li><strong>Email:</strong> <a href="mailto:privacy@nextfolios.com">privacy@nextfolios.com</a></li>
+              <li><strong>General inquiries:</strong> <a href="mailto:hello@nextfolios.com">hello@nextfolios.com</a></li>
+              <li><strong>Contact form:</strong> <a href="/contact">nextfolios.com/contact</a></li>
+            </ul>
+            <p>
+              We will respond to all privacy-related inquiries within 30 days. If you are not satisfied with our response, you may have the right to lodge a complaint with your local data protection authority.
+            </p>
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-[var(--color-bg-secondary)]" id="privacy-related">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="text-[var(--color-text-secondary)] mb-4">Related documents:</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/terms" class="btn-secondary text-sm">Terms & Conditions</a>
+            <a href="/contact" class="btn-secondary text-sm">Contact Us</a>
+            <a href="/faq" class="btn-secondary text-sm">FAQ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

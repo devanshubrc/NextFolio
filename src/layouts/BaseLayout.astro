@@ -1,0 +1,75 @@
+---
+/**
+ * BaseLayout.astro — Root layout for all NextFolios pages
+ * Provides HTML boilerplate, font loading, global styles, header, footer
+ */
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchCommand from '../components/react/SearchCommand';
+import CookieConsent from '../components/react/CookieConsent';
+import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0f" />
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" 
+    rel="stylesheet" 
+  />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  
+  <!-- RSS Autodiscovery -->
+  <link rel="alternate" type="application/rss+xml" title="NextFolios Blog" href={new URL('rss.xml', Astro.site).href} />
+  
+  <!-- SEO Head slot — pages inject SEOHead component here -->
+  <slot name="head" />
+  
+  <!-- Theme initialization (prevent flash of wrong theme) -->
+  <script is:inline>
+    (function() {
+      try {
+        const theme = localStorage.getItem('nextfolios-theme');
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body class={className}>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  
+  <Header />
+  <SearchCommand client:load />
+  
+  <slot />
+  
+  <Footer />
+  
+  <CookieConsent client:idle />
+  <Analytics />
+  
+  <!-- Analytics placeholder (loaded after consent) -->
+  <slot name="analytics" />
+</body>
+</html>

@@ -1,0 +1,54 @@
+---
+/**
+ * ToolSchema.astro — SoftwareApplication JSON-LD for tool pages.
+ *
+ * Generates SoftwareApplication structured data including
+ * applicationCategory, operatingSystem, and free pricing info.
+ *
+ * @example
+ * ```astro
+ * <ToolSchema
+ *   name="ATS Resume Checker"
+ *   description="Check your resume against ATS systems for free."
+ *   url="https://nextfolios.com/ats-resume-checker"
+ *   category="Productivity"
+ * />
+ * ```
+ */
+
+interface Props {
+  /** Tool name */
+  name: string;
+  /** Tool description */
+  description: string;
+  /** Full URL of the tool page */
+  url: string;
+  /** Application category (e.g. "Productivity", "Career") */
+  category: string;
+}
+
+const { name, description, url, category } = Astro.props;
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name,
+  description,
+  url,
+  applicationCategory: category,
+  operatingSystem: 'Web',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  creator: {
+    '@type': 'Organization',
+    name: 'NextFolios',
+    url: 'https://nextfolios.com',
+  },
+};
+---
+
+<!-- JSON-LD: SoftwareApplication -->
+<script type="application/ld+json" set:html={JSON.stringify(toolSchema)} />

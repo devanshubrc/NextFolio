@@ -1,0 +1,52 @@
+---
+/**
+ * Analytics.astro — Dynamic client-side analytics loading (GDPR compliant)
+ * Listens for 'analytics-consent-granted' event before loading scripts
+ */
+interface Props {
+  measurementId?: string; // Google Analytics Measurement ID
+}
+
+const { measurementId = 'G-XXXXXXXXXX' } = Astro.props;
+---
+
+<script is:inline define:vars={{ measurementId }}>
+  (function() {
+    function loadAnalytics() {
+      // Prevent double load
+      if (window.gaLoaded) return;
+      window.gaLoaded = true;
+
+      // Load GA4 script
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', measurementId, {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=None;Secure'
+      });
+      console.log('Analytics loaded successfully.');
+    }
+
+    // Check if consent already granted
+    try {
+      const consent = localStorage.getItem('nextfolios-consent');
+      if (consent === 'accepted') {
+        loadAnalytics();
+      }
+    } catch (e) {}
+
+    // Listen for consent grant event
+    document.addEventListener('analytics-consent-granted', () => {
+      loadAnalytics();
+    });
+  })();
+</script>

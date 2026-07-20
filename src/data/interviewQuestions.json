@@ -1,0 +1,77 @@
+[
+  {
+    "id": "star-1",
+    "category": "behavioral",
+    "difficulty": "medium",
+    "question": "Tell me about a time you faced a major technical challenge. How did you resolve it?",
+    "hints": [
+      "Use the STAR framework: Situation, Task, Action, Result.",
+      "Describe the technical complexity clearly but avoid getting lost in irrelevant details.",
+      "Highlight your specific role, decision-making logic, and collaboration.",
+      "End with a clear, quantified outcome metric (e.g. improved speed by 30%)."
+    ],
+    "answer": "Describe a real production bottleneck or migration challenge. Frame it by detailing: 1) What was broken or inefficient. 2) The alternative paths you evaluated. 3) The specific refactoring actions you spearheaded. 4) The performance gains, team time saved, or dollar costs cut as a result."
+  },
+  {
+    "id": "star-2",
+    "category": "behavioral",
+    "difficulty": "medium",
+    "question": "Describe a situation where you had a conflict with a team member. How did you handle it?",
+    "hints": [
+      "Pick a professional disagreement (e.g., code architecture, priorities) rather than a personal clash.",
+      "Show empathy and explain the team member's perspective fairly.",
+      "Describe the collaborative communication steps you took to align.",
+      "Focus on the positive team output and how it improved your working relationship."
+    ],
+    "answer": "Frame this around a technical disagreement. Explain the situation: 1) Two different approaches to a problem. 2) How you sat down together to list pros/cons objectively. 3) The compromise or data-backed decision you reached. 4) How this built trust and standard practices for subsequent reviews."
+  },
+  {
+    "id": "tech-1",
+    "category": "technical",
+    "difficulty": "easy",
+    "question": "Explain the difference between Virtual DOM and Shadow DOM in web development.",
+    "hints": [
+      "Virtual DOM is a programming concept (used by React) that keeps UI representations in memory to batch page updates.",
+      "Shadow DOM is a native browser API for scoping CSS and DOM styles in Web Components.",
+      "Highlight performance benefits and styling insulation differences."
+    ],
+    "answer": "1) Virtual DOM: A lightweight JS copy of the real DOM. React diffs changes and updates only modified nodes (reconciliation) for efficiency. 2) Shadow DOM: A browser spec that isolates styling for a widget, keeping styles from leaking out or in (used for encapsulated custom elements)."
+  },
+  {
+    "id": "tech-2",
+    "category": "technical",
+    "difficulty": "hard",
+    "question": "How does event loop and concurrency work in JavaScript/Node.js?",
+    "hints": [
+      "JavaScript is single-threaded, meaning one execution context stack.",
+      "Asynchronous tasks (callbacks, promises) are offloaded to browser Web APIs or Node worker threads.",
+      "Explain the priority sequence: Call Stack -> Microtask Queue (Promises) -> Callback Queue (setTimeout) -> Call Stack (when empty)."
+    ],
+    "answer": "1) Call Stack: Executes synchronous JS code. 2) Web APIs/Libuv: Handles async calls like network fetch or timers. 3) Microtask Queue: Higher priority queue for Promise resolution, mutation observers. 4) Callback/Macrotask Queue: For setTimeout, DOM events. The loop continuously pushes microtasks, then macrotasks, to the stack once it clears."
+  },
+  {
+    "id": "design-1",
+    "category": "design",
+    "difficulty": "hard",
+    "question": "Design a highly available and scalable notification system.",
+    "hints": [
+      "Clarify requirements: types of notifications (email, push, SMS), target scale (millions/day).",
+      "Draft system architecture: API gateway, load balancers, rate limiters, message queues (Kafka/RabbitMQ).",
+      "Address notification status tracking, prioritization, retry mechanisms, and delivery guarantees.",
+      "Discuss database choice (NoSQL for log tracking, cache layers for quick settings lookups)."
+    ],
+    "answer": "1) Intake: API servers receive requests, validate, and write to a distributed Message Queue. 2) Queuing: Segregate queues by channel (SMS, email) and priority to prevent blocking. 3) Processing: Workers read from queue, fetch user preferences, rate limit, and trigger provider APIs. 4) Status Tracking: Write deliveries to NoSQL databases for analytical logging."
+  },
+  {
+    "id": "design-2",
+    "category": "design",
+    "difficulty": "medium",
+    "question": "How would you design a client-side caching strategy for a web application?",
+    "hints": [
+      "Specify different cache targets: assets (images, fonts), network data (REST/GraphQL), static pages.",
+      "Detail options: HTTP headers (Cache-Control, ETag), Service Workers (Cache API), Local Storage/IndexedDB.",
+      "Address cache invalidation models: stale-while-revalidate, network-first, cache-first."
+    ],
+    "answer": "1) Assets: Set long-term Cache-Control headers with content hashing filenames. 2) Offline/PWA: Configure Service Worker Cache API for app shell. 3) Data queries: Implement state managers (like TanStack Query) with customized staleTime and cacheTime parameters to prevent redundant server calls."
+  }
+]

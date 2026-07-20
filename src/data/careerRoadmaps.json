@@ -1,0 +1,65 @@
+{
+  "frontend": [
+    {
+      "stage": "1. Internet & Web Basics",
+      "skills": [
+        { "name": "HTTP / HTTPS protocols", "desc": "Understand request-response models, status codes, and browser secure routing." },
+        { "name": "HTML5 semantic syntax", "desc": "Learn elements for layout, accessibility tags (ARIA), and SEO basics." },
+        { "name": "CSS3 styles & responsive layouts", "desc": "Understand Box Model, Flexbox, CSS Grid, Media queries." }
+      ]
+    },
+    {
+      "stage": "2. Programming & Logic",
+      "skills": [
+        { "name": "JavaScript ES6+ fundamentals", "desc": "Scope, closures, hoisting, prototype inheritance, event bubbling." },
+        { "name": "Asynchronous JS coding", "desc": "Understand promises, async/await commands, fetch API calls." },
+        { "name": "TypeScript type safety", "desc": "Interfaces, types, generics, compiler flags, type assertions." }
+      ]
+    },
+    {
+      "stage": "3. UI Frameworks & Tools",
+      "skills": [
+        { "name": "React 19 hooks & components", "desc": "State management, useEffect cycles, custom hooks, Server Actions." },
+        { "name": "Tailwind CSS v4 utility layout", "desc": "Use responsive utility classes, variables config, container elements." },
+        { "name": "Vite building & packaging", "desc": "Module loading, dev servers, production bundling, assets configuration." }
+      ]
+    },
+    {
+      "stage": "4. Performance & Validation",
+      "skills": [
+        { "name": "Core Web Vitals & Lighthouse auditing", "desc": "Measure LCP, FID, CLS scores; optimize images, render blocks." },
+        { "name": "Testing frameworks (Jest & Cypress)", "desc": "Write unit tests for UI controls, end-to-end integration tests." }
+      ]
+    }
+  ],
+  "backend": [
+    {
+      "stage": "1. Programming & Foundations",
+      "skills": [
+        { "name": "Node.js runtime environment", "desc": "Understand event loop, concurrency mechanisms, stream piping, modules." },
+        { "name": "SQL & Relational DBs (PostgreSQL)", "desc": "Write queries, join tables, create indexes, evaluate query execution plans." }
+      ]
+    },
+    {
+      "stage": "2. Server APIs & Frameworks",
+      "skills": [
+        { "name": "Express & NestJS API structures", "desc": "Build routes, design middlewares, implement CORS, structure controllers." },
+        { "name": "RESTful & GraphQL API concepts", "desc": "Understand request methods, status code returns, schemas, queries." }
+      ]
+    },
+    {
+      "stage": "3. Infrastructure & Deployment",
+      "skills": [
+        { "name": "Docker container virtualization", "desc": "Create Dockerfiles, run compose containers, mount volumes, route networks." },
+        { "name": "CI/CD automated pipelines", "desc": "Set up GitHub Actions to run linters, build verification tests, auto-deploy." }
+      ]
+    },
+    {
+      "stage": "4. System Architecture & Caching",
+      "skills": [
+        { "name": "Redis microsecond cache integration", "desc": "Implement key-value cache layer to speed up high-latency database queries." },
+        { "name": "Microservices & MQ (Kafka/RabbitMQ)", "desc": "Decouple services using message queues, asynchronous event-driven designs." }
+      ]
+    }
+  ]
+}

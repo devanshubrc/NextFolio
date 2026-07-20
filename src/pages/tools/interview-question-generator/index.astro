@@ -1,0 +1,138 @@
+---
+/**
+ * index.astro — Interview Question Generator Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import InterviewQuestions from '../../../components/react/tools/InterviewQuestions';
+
+const toolName = 'Interview Questions';
+const toolSlug = 'interview-question-generator';
+const toolCategory = 'Interview Preparation';
+const toolIcon = '❓';
+const pageTitle = 'Curated Tech Interview Prep Coach & Generator - NextFolios';
+const pageDescription = 'Prepare for technical, behavioral, and system design interviews. Practice with curated questions, check answering hints, and draft your responses locally in your browser.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>A successful interview requires a balance of strong technical knowledge and clear, structured communication. Our Interview Prep Coach helps you practice both behavioral (STAR method) and specialized engineering questions.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">1. Filter by Domain</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Choose categories (Behavioral, Technical, System Design) and difficulty tiers (Easy, Medium, Hard) to match your upcoming interview loop.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">2. Draft Your Answering Notes</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Use our checklist hints to structure your outline. Type your draft response directly inside our secure local notepad.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">3. Reveal Sample Answers</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Reveal the recommended response outlines to see what structural points, keywords, and outcome metrics hiring managers look for.</p>
+      </div>
+    </div>
+
+    <p>All notes and answers you type are saved locally inside your browser's localStorage. Nothing is uploaded to remote servers or databases, which means your personal career history, project notes, and company-specific examples remain entirely private to you.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Preparing for interviews by writing down answers is proven to build muscle memory and reduce speaking anxiety. Using our prep coach offers several benefits:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>Structured Communication (STAR):</strong> Most behavioral questions fail not because of the story, but because the candidate rambles. Our checklist guides enforce the Situation-Task-Action-Result format.</li>
+      <li><strong>Focus on Tech and Design:</strong> Shift easily between coding logic questions (like Event Loop) and backend scalability questions (like scalable notification design) to get a balanced review.</li>
+      <li><strong>Secure Practice Sandbox:</strong> Practice drafting examples from your current job with absolute confidence. No signup is required, and data never leaves your client browser.</li>
+      <li><strong>100% Free:</strong> No paywalls, session limits, or trial barriers. Practice as much and as often as you need.</li>
+    </ul>
+
+    <p>By transforming passive reading into active typing, you solidify your experiences and enter the interview loop ready to answer clearly under pressure.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>Hiring loops look for candidates who display technical ownership, collaborative leadership, and analytical rigor. Follow these tips to structure your responses:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Keep the "Action" at 70%</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">When telling a story, spend very little time on the setup (Situation & Task). Recruiters care most about the Action: what you specifically engineered, how you collaborated, and how you made decisions under constraint.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Quantify the "Result"</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Every story needs a happy ending. Always conclude with a measurable outcome: "As a result of this backend caching implementation, page load times were reduced by 30%, which saved our team $2k/month in server costs."</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">In System Design, Clarify First</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">When asked to design a system, never jump straight into drawing boxes. Start by asking clarifying questions to establish scope: "What is the expected scale of daily active users? Do we need strict consistency or high availability?"</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Say "I", Not "We"</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">While team collaboration is important, recruiters want to know your individual contribution. Avoid passive phrasing like "We migrated the database" and specify your direct actions: "I designed the target schema and wrote the migration script."</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'What is the STAR method for behavioral interviews?',
+    answer: 'STAR stands for Situation (set context), Task (what needed to be done), Action (the specific steps you took), and Result (the quantifiable outcome). Using this sequence prevents rambling and ensures you cover the core details hiring managers score.',
+  },
+  {
+    question: 'How do I save my notes?',
+    answer: 'The notepad uses the browser\'s localStorage to save your text as you type. If you close your browser or refresh the page, your typed practice responses will load back automatically.',
+  },
+  {
+    question: 'Are my practice responses kept private?',
+    answer: 'Absolutely. NextFolios performs all logic locally on your machine. Your draft responses, notes, and progress are never sent to a database or server.',
+  },
+  {
+    question: 'What is the difference between behavioral and system design interviews?',
+    answer: 'Behavioral interviews evaluate your past actions, leadership style, and conflict resolution skills. System Design interviews evaluate your architectural design skills, scalability knowledge, and trade-off evaluation when designing large distributed systems.',
+  },
+  {
+    question: 'How many stories should I prepare for a behavioral loop?',
+    answer: 'We recommend preparing 4-5 core stories from your career history. Choose projects where you solved complex bugs, handled tight deadlines, managed a conflict, or mentored team members. You can adapt these core stories to fit different questions.',
+  },
+  {
+    question: 'How do I handle a question when I do not know the answer?',
+    answer: 'Never guess or make up an answer. Instead, explain your analytical reasoning process: "I haven\'t worked with that specific tool, but based on my knowledge of X, I would evaluate it by checking..." This shows problem-solving structure.',
+  },
+  {
+    question: 'Are there questions for junior candidates?',
+    answer: 'Yes, you can filter by "Easy" difficulty to practice foundational web development and database concepts, or behavioral questions focused on collaborative coursework and personal project challenges.',
+  },
+  {
+    question: 'What is event loop microtask vs macrotask queue?',
+    answer: 'Microtasks (like Promise callbacks) have higher priority than macrotasks (like setTimeout). The JS event loop will execute all pending items in the microtask queue before processing the next macrotask, which is a classic advanced technical interview question.'
+  }
+];
+
+const blogTags = ['interview', 'preparation', 'system-design'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <InterviewQuestions slot="tool" client:load />
+</ToolLayout>

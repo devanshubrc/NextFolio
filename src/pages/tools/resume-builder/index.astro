@@ -1,0 +1,138 @@
+---
+/**
+ * index.astro — Resume Builder Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import ResumeBuilder from '../../../components/react/tools/ResumeBuilder';
+
+const toolName = 'Resume Builder';
+const toolSlug = 'resume-builder';
+const toolCategory = 'Resume Optimization';
+const toolIcon = '🏗️';
+const pageTitle = 'Free Resume Builder - No Sign-up Required - NextFolios';
+const pageDescription = 'Build professional, ATS-optimized resumes online for free. No login required. Customize clean templates, see a live preview, and download your resume instantly as a PDF.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>Creating a professional resume doesn't need to be complicated. Our Resume Builder simplifies the process by breaking down the document into structured steps, giving you complete control over your content and layout.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">1. Fill in Your Details</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Follow our step-by-step form wizard to enter your contact details, work history, academic background, projects, and achievements.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">2. Select Your Style</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Choose from our curated collection of professional templates (Classic, Modern, Minimal, Creative) designed to look premium and pass ATS scanners.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">3. Download as PDF</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">See your changes in real-time on our live preview. Once satisfied, export a clean, high-resolution PDF with one click or print directly.</p>
+      </div>
+    </div>
+
+    <p>All data you enter is automatically saved to your browser's local storage. This means you can close the tab, come back later, and continue editing exactly where you left off. Everything is processed locally in JavaScript — your personal details, contact numbers, and employment history are never transmitted to a server or stored in a remote database, ensuring complete privacy.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Using a structured resume builder gives you a major advantage over formatting documents in a word processor. Here are the core benefits of building your resume with NextFolios:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>No Account Required:</strong> Most online builders force you to register or input a credit card to download your completed resume. NextFolios is 100% free with no sign-up or paywalls.</li>
+      <li><strong>Consistent Professional Formatting:</strong> Word processors often shift lines or scramble spacing when you change margins or font sizes. Our templates handle layouts automatically, ensuring margins, line heights, and fonts remain consistent.</li>
+      <li><strong>Built-in ATS Optimization:</strong> Every template is designed with parsing algorithms in mind. We use standard CSS hierarchies and single-column/simple column setups that translate perfectly to plain text parser crawlers.</li>
+      <li><strong>Live Split-Screen Preview:</strong> Make edits on the left and see the exact PDF layout change instantly on the right. This saves you the time of constantly exporting files to check margins.</li>
+    </ul>
+
+    <p>By removing the hassle of formatting, you can focus 100% of your energy on writing high-impact content that gets you hired.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>A well-formatted resume is the foundation of a successful job application. Follow these expert tips to ensure your resume stands out:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Write Concise Bullet Points</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Keep your descriptions under 3 bullet points per project and 4-5 bullet points per job role. Focus on accomplishments and result statements rather than long lists of daily responsibilities.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Adopt the STAR Method</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">For every accomplishment, outline the Situation, the Task at hand, the Action you took, and the measurable Result. Recruiters favor candidates who demonstrate outcome-oriented performance.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Proofread and Verify Links</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Double check that your contact email, phone number, and LinkedIn URLs are correct. Make sure your GitHub or personal portfolio links are active and lead to your best work.</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Tailor for the Role</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">When applying for different roles, adjust your technical skills section and summary keywords to match the exact requirements of the job description. Having multiple target resumes raises your callback rates.</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'How do I download my resume as a PDF?',
+    answer: 'Once you have filled in your details and selected a template style, simply click the "Download PDF" button at the top of the builder. The PDF will compile instantly in your browser and start downloading.',
+  },
+  {
+    question: 'Do I have to pay to download or print my resume?',
+    answer: 'No. NextFolios is 100% free. There are no subscriptions, premium templates, hidden charges, or watermarks. All features are completely free to use.',
+  },
+  {
+    question: 'Is my data secure on your website?',
+    answer: 'Yes. All data processing occurs locally in your browser. We do not upload your input details to a server, store them in a database, or share them with any third parties. Your data remains completely yours.',
+  },
+  {
+    question: 'How does the auto-save feature work?',
+    answer: 'As you type in the form wizard, the builder automatically saves your inputs to your browser\'s local storage. If you refresh the page or close the tab, your data will load back automatically when you return.',
+  },
+  {
+    question: 'How do I add a new job experience or degree?',
+    answer: 'Go to the corresponding tab in the form wizard (e.g. "Experience" or "Education") and click the "+ Add Job" or "+ Add School" button. This will append a new blank form block. You can add as many blocks as you need.',
+  },
+  {
+    question: 'Can I import my existing resume to edit it?',
+    answer: 'Currently, the builder requires manual form input to guarantee clean formatting and parsing. If you have an existing resume, you can quickly copy and paste the sections into our wizard.',
+  },
+  {
+    question: 'What templates are available?',
+    answer: 'We provide four distinct styles: "Classic" (traditional serif style), "Modern" (clean two-column sidebar layout), "Minimal" (modern spaced aesthetic), and "Creative" (featuring bold headers and skill badges). You can toggle between them instantly without losing your text.',
+  },
+  {
+    question: 'How do I print my resume?',
+    answer: 'Click the "Print" button at the top of the builder. This will trigger your browser\'s native print dialog, allowing you to select your printer or save as a local PDF.'
+  }
+];
+
+const blogTags = ['resume', 'builder', 'career-growth'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <ResumeBuilder slot="tool" client:load />
+</ToolLayout>

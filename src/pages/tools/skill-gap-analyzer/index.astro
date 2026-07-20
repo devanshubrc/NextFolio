@@ -1,0 +1,138 @@
+---
+/**
+ * index.astro — Skill Gap Analyzer Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import SkillGapAnalyzer from '../../../components/react/tools/SkillGapAnalyzer';
+
+const toolName = 'Skill Gap Analyzer';
+const toolSlug = 'skill-gap-analyzer';
+const toolCategory = 'Career Growth';
+const toolIcon = '🎯';
+const pageTitle = 'Free Tech Skill Gap Analyzer - NextFolios';
+const pageDescription = 'Audit your technical skills against core industry requirements. Select target roles, input your current stack, and get prioritized learning recommendations to bridge skill gaps.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>A skill gap analysis is a systematic audit of your current abilities against the professional expectations of a target role. Our Skill Gap Analyzer automates this matching process locally in your browser.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">1. Choose Target Position</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Select the engineering track you are aiming for (Frontend or Backend Developer) to load its complete skill framework.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">2. Document Your Stack</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Add languages, tools, frameworks, and databases you have working knowledge of using our tag input form.</p>
+      </div>
+      <div class="p-5 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-lg mb-2 text-[var(--color-text-accent)]">3. Audit Gaps and Plan</h4>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Review your overall matching percentage. Focus on the list of missing skills and follow prioritized recommendations to study them.</p>
+      </div>
+    </div>
+
+    <p>We use local pattern matching algorithms to compare your inputs against our central skills database. As you type skills and verify matches, everything is saved inside your client device's memory. No career metrics, skill levels, or targeted roles are ever uploaded or transmitted online, ensuring total privacy.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Auditing your skills helps you target your training, giving you clear advantages during your job search:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>Optimize Study Time:</strong> Stop studying languages or frameworks you already understand. A gap audit shows you exactly where your knowledge is lacking, allowing you to focus on high-impact learning.</li>
+      <li><strong>Align with Corporate Standards:</strong> Hiring managers look for specific core stacks. Identifying missing terms (like Docker or Service Workers) helps you structure your resume to pass algorithmic checks.</li>
+      <li><strong>Prepare for Technical Reviews:</strong> Interviews test your breadth of knowledge. Knowing your weaknesses beforehand lets you review those concepts and avoid surprise questions during technical interviews.</li>
+      <li><strong>100% Free:</strong> Perform audits, track progress, and read recommendations for free, with no account registration paywalls.</li>
+    </ul>
+
+    <p>Bridging even 1-2 major skill gaps can double your callback rates and qualify you for higher salary tiers.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>Resolving skill gaps is about deliberate practice and proving your capabilities. Follow these tips to bridge your gap effectively:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Build Proof-of-Work Projects</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">The best way to learn a missing skill (like Redis caching or Docker containers) is to build a project using it. Host the project code on GitHub and document your architectural decisions in the README file.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Prioritize System Foundations</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">If you have gaps in both tools (like Tailwind) and fundamentals (like asynchronous JS), always prioritize the fundamentals. Frameworks change constantly, but system principles remain stable.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Update Your Resume Immediately</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">As soon as you gain working knowledge of a missing skill, integrate it naturally into your resume. Mention it under your technical skills section and describe how you used it in your personal projects.</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Leverage Free Learning Resources</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">You don't need expensive courses to learn tech. Use official document sites, developer blogs, and open-source project repositories to learn concepts and review implementation patterns.</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'How is a skill gap audit performed?',
+    answer: 'The analyzer pulls the complete required skill list for your target role from our career roadmaps database. It then compares this list against your current skills, mapping exact matches and listing missing skills with priority ratings.',
+  },
+  {
+    question: 'How do I add my skills to the analyzer?',
+    answer: 'Go to the "Add My Skills" tab, type a skill (like React, Git, or PostgreSQL), and click "Add Skill". You can add as many skills as you want. The tool saves your entries locally so you don\'t lose them.',
+  },
+  {
+    question: 'Is my data secure?',
+    answer: 'Yes. All data processing occurs locally in your browser. We do not upload your skills list, store target roles, or track your details on any server.',
+  },
+  {
+    question: 'What is a good role match rate?',
+    answer: 'A match rate of 70% or higher indicates you possess the core skills required for entry-level and mid-level roles. Match rates above 90% indicate high suitability for senior positions.',
+  },
+  {
+    question: 'How do I bridge a missing skill gap?',
+    answer: 'Read the recommendations for the missing skill, build a small project incorporating that technology, write a blog post explaining the concepts, and then list the skill on your resume once you have working knowledge.',
+  },
+  {
+    question: 'Can I use this tool to prepare for a performance review?',
+    answer: 'Yes! Select your current role, audit your skills to find any gaps, and use the recommendations to build a learning plan. This shows proactive leadership and professional initiative to your manager.',
+  },
+  {
+    question: 'Does the tool support non-developer roles?',
+    answer: 'The current version of our audit database supports Frontend and Backend Developer tracks. We plan to expand the database to cover UI/UX Design, Product Management, and Mobile Development tracks in the future.',
+  },
+  {
+    question: 'Will clearing my browser cache reset my skills list?',
+    answer: 'Yes, because the skills list is saved in your browser\'s localStorage. We recommend copying your skills list to a local file if you plan to clear your browser data.'
+  }
+];
+
+const blogTags = ['skill-gap', 'career-planning', 'learning-tech'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <SkillGapAnalyzer slot="tool" client:load />
+</ToolLayout>

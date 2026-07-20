@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEOHead from '../components/seo/SEOHead.astro';
+
+const lastUpdated = 'July 20, 2026';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Terms & Conditions — NextFolios',
+  description: 'Terms and conditions governing the use of NextFolios career tools and services.',
+  url: 'https://nextfolios.com/terms',
+  dateModified: '2026-07-20',
+};
+---
+
+<BaseLayout>
+  <SEOHead
+    slot="head"
+    title="Terms & Conditions - NextFolios"
+    description="Read the NextFolios terms and conditions. Understand your rights and responsibilities when using our free career tools, including our ATS checker, portfolio generator, and salary toolkit."
+    schema={schema}
+  />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-32 pb-12">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto text-center">
+          <span class="badge mb-6">Legal</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            Terms & <span class="gradient-text">Conditions</span>
+          </h1>
+          <p class="text-[var(--color-text-muted)] text-sm">
+            Last updated: {lastUpdated}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="py-16" id="terms-content">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto">
+          <article class="prose">
+
+            <p>
+              Welcome to NextFolios. These Terms and Conditions ("Terms") govern your access to and use of the NextFolios website located at <a href="https://nextfolios.com">https://nextfolios.com</a> (the "Service"), including all tools, content, features, and functionality offered through the Service. By accessing or using NextFolios, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not use the Service.
+            </p>
+
+            <h2 id="terms-acceptance">1. Acceptance of Terms</h2>
+            <p>
+              By accessing, browsing, or using NextFolios in any manner, you acknowledge that you have read, understood, and agree to be bound by these Terms and our <a href="/privacy-policy">Privacy Policy</a>, which is incorporated herein by reference. These Terms constitute a legally binding agreement between you and NextFolios.
+            </p>
+            <p>
+              You must be at least 13 years of age (or the minimum age of digital consent in your jurisdiction) to use this Service. If you are under 18, you represent that you have your parent or guardian's permission to use the Service. By using NextFolios, you represent and warrant that you meet these eligibility requirements.
+            </p>
+            <p>
+              If you are using NextFolios on behalf of an organization, you represent that you have the authority to bind that organization to these Terms, and references to "you" in these Terms include that organization.
+            </p>
+
+            <h2 id="terms-description">2. Description of Service</h2>
+            <p>
+              NextFolios provides a suite of free, browser-based career tools designed to help job seekers improve their professional materials and career strategy. Our current tools include:
+            </p>
+            <ul>
+              <li><strong>ATS Resume Checker:</strong> Analyzes your resume for compatibility with Applicant Tracking Systems, providing a score and actionable recommendations. Your resume file is processed entirely in your browser and is never uploaded to our servers.</li>
+              <li><strong>Portfolio Generator:</strong> Helps you create a professional portfolio website using customizable templates. All content is generated client-side and can be exported for self-hosting.</li>
+              <li><strong>Salary Negotiation Toolkit:</strong> Provides salary benchmarks and negotiation strategies based on role, experience, and location data. All inputs remain on your device.</li>
+              <li><strong>Interview Prep Coach:</strong> Offers practice questions and feedback frameworks for behavioral, technical, and situational interviews. Your responses are not recorded or stored on our servers.</li>
+            </ul>
+            <p>
+              The Service is provided "as is" and is subject to change. We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time without prior notice. We are not obligated to maintain, support, or update any particular feature or tool.
+            </p>
+
+            <h2 id="terms-user-responsibilities">3. User Responsibilities</h2>
+            <p>
+              When using NextFolios, you agree to the following:
+            </p>
+            <ul>
+              <li><strong>Lawful use:</strong> You will use the Service only for lawful purposes and in accordance with these Terms. You will not use the Service to engage in any activity that violates applicable local, state, national, or international laws or regulations.</li>
+              <li><strong>Accurate information:</strong> Any information you provide through the Service (such as contact form submissions or emails) will be accurate, current, and complete to the best of your knowledge.</li>
+              <li><strong>No interference:</strong> You will not attempt to interfere with, disrupt, or compromise the integrity, security, or performance of the Service. This includes, but is not limited to, attempting to gain unauthorized access to our systems, deploying malware, or conducting denial-of-service attacks.</li>
+              <li><strong>No scraping or automation:</strong> You will not use automated scripts, bots, scrapers, or similar tools to access, extract, or collect content from the Service without our prior written consent.</li>
+              <li><strong>No reverse engineering:</strong> You will not attempt to decompile, disassemble, reverse engineer, or otherwise derive source code from any proprietary components of the Service, except to the extent that such activity is expressly permitted by applicable law.</li>
+              <li><strong>Personal responsibility:</strong> You are solely responsible for any content you create, upload, or input using our tools. NextFolios is not responsible for the accuracy, quality, or appropriateness of resumes, portfolios, or other materials you generate using our Service.</li>
+            </ul>
+
+            <h2 id="terms-intellectual-property">4. Intellectual Property</h2>
+
+            <h3>4.1 Our Intellectual Property</h3>
+            <p>
+              The Service, including its design, code, features, documentation, branding, logos, graphics, and all other content created by NextFolios, is owned by NextFolios and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, create derivative works from, display, perform, or otherwise exploit any part of the Service without our prior written permission, except as expressly allowed by these Terms or applicable law.
+            </p>
+
+            <h3>4.2 Your Content</h3>
+            <p>
+              You retain full ownership of all content you create, input, or generate using NextFolios tools. This includes your resumes, portfolios, salary data, interview responses, and any other personal or professional materials. We do not claim any ownership rights over your content. Because our tools process your content client-side, we do not have access to, and therefore cannot use, your content for any purpose.
+            </p>
+
+            <h3>4.3 Templates and Generated Output</h3>
+            <p>
+              Portfolio templates and design assets provided through the Service are licensed for your personal and professional use. You may use generated portfolio websites for any lawful purpose, including commercial self-promotion. You may not resell, redistribute, or sublicense the templates themselves as standalone products.
+            </p>
+
+            <h2 id="terms-disclaimers">5. Disclaimers</h2>
+            <p>
+              The Service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. To the fullest extent permitted by applicable law, NextFolios disclaims all warranties, including but not limited to:
+            </p>
+            <ul>
+              <li>Warranties of merchantability, fitness for a particular purpose, and non-infringement.</li>
+              <li>Warranties that the Service will be uninterrupted, error-free, secure, or free from viruses or other harmful components.</li>
+              <li>Warranties regarding the accuracy, reliability, or completeness of any information provided through the Service.</li>
+            </ul>
+            <p>
+              <strong>Career outcomes:</strong> NextFolios does not guarantee any specific career outcomes, job placements, salary increases, or interview results. Our tools are designed to help you improve your professional materials and strategy, but success depends on many factors outside our control, including market conditions, employer preferences, your qualifications, and your performance. ATS scores, salary benchmarks, and interview feedback provided by our tools are estimates and guidelines — they should inform your decisions but are not guarantees.
+            </p>
+            <p>
+              <strong>Professional advice:</strong> The information and tools provided through NextFolios do not constitute professional career counseling, legal advice, financial advice, or employment guidance. If you need professional advice, consult a qualified professional in the relevant field.
+            </p>
+
+            <h2 id="terms-limitation">6. Limitation of Liability</h2>
+            <p>
+              To the maximum extent permitted by applicable law, NextFolios, its founders, contributors, affiliates, and partners shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+            </p>
+            <ul>
+              <li>Loss of profits, revenue, data, or business opportunities.</li>
+              <li>Personal injury or property damage resulting from your use of the Service.</li>
+              <li>Unauthorized access to or alteration of your transmissions or data.</li>
+              <li>Any errors, inaccuracies, or omissions in the Service's content, tools, or outputs.</li>
+              <li>Any interruption or cessation of the Service.</li>
+            </ul>
+            <p>
+              In no event shall NextFolios' total aggregate liability exceed the amount you paid to NextFolios in the twelve (12) months preceding the claim. Since our Service is free, this effectively means our maximum liability is zero (0) dollars, to the extent permitted by applicable law.
+            </p>
+            <p>
+              Some jurisdictions do not allow the exclusion or limitation of certain warranties or liability, so some of the above limitations may not apply to you. In such jurisdictions, our liability will be limited to the greatest extent permitted by applicable law.
+            </p>
+
+            <h2 id="terms-indemnification">7. Indemnification</h2>
+            <p>
+              You agree to indemnify, defend, and hold harmless NextFolios and its founders, contributors, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or related to: (a) your use of the Service; (b) your violation of these Terms; (c) your violation of any rights of a third party; or (d) any content you create, upload, or distribute using the Service.
+            </p>
+
+            <h2 id="terms-third-party">8. Third-Party Links and Services</h2>
+            <p>
+              The Service may contain links to third-party websites, services, or resources that are not owned or controlled by NextFolios. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party sites or services. You acknowledge and agree that NextFolios is not responsible or liable for any damage or loss caused by or in connection with the use of any third-party content, goods, or services.
+            </p>
+
+            <h2 id="terms-modifications">9. Modifications to Terms</h2>
+            <p>
+              We reserve the right to modify these Terms at any time. When we make changes, we will update the "Last updated" date at the top of this page. Material changes may be communicated through a notice on the Service. Your continued use of NextFolios after any modification constitutes your acceptance of the updated Terms. If you do not agree with the modified Terms, you must stop using the Service.
+            </p>
+            <p>
+              We encourage you to review these Terms periodically to stay informed of any changes. It is your responsibility to check this page for updates.
+            </p>
+
+            <h2 id="terms-termination">10. Termination</h2>
+            <p>
+              We may terminate or suspend your access to the Service immediately, without prior notice, for any reason, including if we reasonably believe that you have violated these Terms. Upon termination, your right to use the Service ceases immediately. Since our tools process data client-side, termination of access does not affect any data stored on your local device.
+            </p>
+            <p>
+              All provisions of these Terms that by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, indemnification obligations, and limitations of liability.
+            </p>
+
+            <h2 id="terms-governing-law">11. Governing Law and Dispute Resolution</h2>
+            <p>
+              These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which NextFolios operates, without regard to conflict of law principles. Any dispute arising out of or relating to these Terms or the Service shall first be attempted to be resolved through good-faith negotiation between the parties.
+            </p>
+            <p>
+              If a dispute cannot be resolved through negotiation within 30 days, either party may pursue resolution through binding arbitration or in the courts of competent jurisdiction, depending on the applicable laws in your region. You agree that any legal action or proceeding shall be brought exclusively in the courts of the governing jurisdiction, and you consent to the personal jurisdiction of such courts.
+            </p>
+
+            <h2 id="terms-severability">12. Severability and Waiver</h2>
+            <p>
+              If any provision of these Terms is found to be unenforceable or invalid by a court of competent jurisdiction, that provision shall be limited or eliminated to the minimum extent necessary so that these Terms shall otherwise remain in full force and effect.
+            </p>
+            <p>
+              The failure of NextFolios to exercise or enforce any right or provision of these Terms shall not constitute a waiver of such right or provision. No waiver of any term shall be deemed a further or continuing waiver of such term or any other term.
+            </p>
+
+            <h2 id="terms-entire-agreement">13. Entire Agreement</h2>
+            <p>
+              These Terms, together with our <a href="/privacy-policy">Privacy Policy</a>, constitute the entire agreement between you and NextFolios regarding the use of the Service. These Terms supersede any prior agreements, communications, or understandings, whether written or oral, relating to the subject matter hereof.
+            </p>
+
+            <h2 id="terms-contact">14. Contact Information</h2>
+            <p>
+              If you have any questions or concerns about these Terms, please contact us:
+            </p>
+            <ul>
+              <li><strong>Email:</strong> <a href="mailto:legal@nextfolios.com">legal@nextfolios.com</a></li>
+              <li><strong>General inquiries:</strong> <a href="mailto:hello@nextfolios.com">hello@nextfolios.com</a></li>
+              <li><strong>Contact form:</strong> <a href="/contact">nextfolios.com/contact</a></li>
+            </ul>
+            <p>
+              We will endeavor to respond to all inquiries related to these Terms within a reasonable timeframe.
+            </p>
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-[var(--color-bg-secondary)]" id="terms-related">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="text-[var(--color-text-secondary)] mb-4">Related documents:</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/privacy-policy" class="btn-secondary text-sm">Privacy Policy</a>
+            <a href="/contact" class="btn-secondary text-sm">Contact Us</a>
+            <a href="/faq" class="btn-secondary text-sm">FAQ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

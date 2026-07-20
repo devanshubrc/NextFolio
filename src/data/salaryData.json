@@ -1,0 +1,61 @@
+{
+  "roles": [
+    "frontend",
+    "backend",
+    "devops",
+    "datascience",
+    "pm",
+    "uiux"
+  ],
+  "countries": [
+    { "code": "US", "name": "United States", "currency": "$" },
+    { "code": "GB", "name": "United Kingdom", "currency": "£" },
+    { "code": "CA", "name": "Canada", "currency": "C$" },
+    { "code": "DE", "name": "Germany", "currency": "€" },
+    { "code": "IN", "name": "India", "currency": "₹" }
+  ],
+  "salaries": {
+    "frontend": {
+      "US": { "junior": 75000, "mid": 105000, "senior": 145000, "lead": 185000 },
+      "GB": { "junior": 35000, "mid": 55000, "senior": 80000, "lead": 110000 },
+      "CA": { "junior": 65000, "mid": 90000, "senior": 125000, "lead": 160000 },
+      "DE": { "junior": 45000, "mid": 65000, "senior": 85000, "lead": 105000 },
+      "IN": { "junior": 600000, "mid": 1200000, "senior": 2200000, "lead": 3500000 }
+    },
+    "backend": {
+      "US": { "junior": 80000, "mid": 115000, "senior": 155000, "lead": 195000 },
+      "GB": { "junior": 38000, "mid": 60000, "senior": 85000, "lead": 120000 },
+      "CA": { "junior": 70000, "mid": 95000, "senior": 130000, "lead": 170000 },
+      "DE": { "junior": 48000, "mid": 70000, "senior": 90000, "lead": 115000 },
+      "IN": { "junior": 650000, "mid": 1350000, "senior": 2400000, "lead": 3800000 }
+    },
+    "devops": {
+      "US": { "junior": 85000, "mid": 120000, "senior": 165000, "lead": 205000 },
+      "GB": { "junior": 40000, "mid": 65000, "senior": 90000, "lead": 130000 },
+      "CA": { "junior": 75000, "mid": 100000, "senior": 135000, "lead": 180000 },
+      "DE": { "junior": 50000, "mid": 72000, "senior": 95000, "lead": 120000 },
+      "IN": { "junior": 700000, "mid": 1500000, "senior": 2600000, "lead": 4200000 }
+    },
+    "datascience": {
+      "US": { "junior": 90000, "mid": 130000, "senior": 175000, "lead": 220000 },
+      "GB": { "junior": 42000, "mid": 70000, "senior": 95000, "lead": 140000 },
+      "CA": { "junior": 80000, "mid": 110000, "senior": 145000, "lead": 190000 },
+      "DE": { "junior": 52000, "mid": 75000, "senior": 100000, "lead": 130000 },
+      "IN": { "junior": 800000, "mid": 1600000, "senior": 2800000, "lead": 4500000 }
+    },
+    "pm": {
+      "US": { "junior": 85000, "mid": 120000, "senior": 160000, "lead": 210000 },
+      "GB": { "junior": 40000, "mid": 65000, "senior": 90000, "lead": 130000 },
+      "CA": { "junior": 75000, "mid": 105000, "senior": 140000, "lead": 180000 },
+      "DE": { "junior": 50000, "mid": 70000, "senior": 95000, "lead": 125000 },
+      "IN": { "junior": 800000, "mid": 1500000, "senior": 2500000, "lead": 4000000 }
+    },
+    "uiux": {
+      "US": { "junior": 70000, "mid": 95000, "senior": 135000, "lead": 175000 },
+      "GB": { "junior": 32000, "mid": 50000, "senior": 75000, "lead": 105000 },
+      "CA": { "junior": 60000, "mid": 85000, "senior": 115000, "lead": 150000 },
+      "DE": { "junior": 42000, "mid": 60000, "senior": 80000, "lead": 100000 },
+      "IN": { "junior": 500000, "mid": 1000000, "senior": 1800000, "lead": 3000000 }
+    }
+  }
+}

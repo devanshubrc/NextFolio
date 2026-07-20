@@ -1,0 +1,65 @@
+---
+/**
+ * Breadcrumb.astro — Visual breadcrumb navigation + BreadcrumbList JSON-LD.
+ *
+ * Renders an accessible breadcrumb trail. The last item is displayed
+ * as plain text (current page). Includes BreadcrumbList structured data.
+ *
+ * @example
+ * ```astro
+ * <Breadcrumb items={[
+ *   { label: "Home", href: "/" },
+ *   { label: "Tools", href: "/tools" },
+ *   { label: "ATS Resume Checker" },
+ * ]} />
+ * ```
+ */
+
+interface Props {
+  /** Breadcrumb trail items — last item should omit `href` (current page) */
+  items: { label: string; href?: string }[];
+}
+
+const SITE_URL = 'https://nextfolios.com';
+const { items } = Astro.props;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: new URL(item.href, SITE_URL).href } : {}),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="w-full max-w-5xl mx-auto px-4 py-4">
+  <ol class="flex items-center flex-wrap gap-1 text-sm text-slate-400">
+    {items.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <span class="mx-2 text-slate-600 select-none" aria-hidden="true">
+            /
+          </span>
+        )}
+        {item.href ? (
+          <a
+            href={item.href}
+            class="text-slate-400 hover:text-white transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-white font-medium" aria-current="page">
+            {item.label}
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

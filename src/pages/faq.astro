@@ -1,0 +1,305 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEOHead from '../components/seo/SEOHead.astro';
+
+const categories = [
+  {
+    name: 'General',
+    icon: '🌐',
+    items: [
+      {
+        question: 'What is NextFolios?',
+        answer: 'NextFolios is a free, browser-based career toolkit that includes an ATS Resume Checker, Portfolio Generator, Salary Negotiation Toolkit, and Interview Prep Coach. All tools are designed to help job seekers create better professional materials and build stronger career strategies — entirely for free, with no account required.',
+      },
+      {
+        question: 'Is NextFolios really free? What is the catch?',
+        answer: 'There is no catch. NextFolios is completely free with no hidden fees, no premium tiers, and no feature gating. We keep costs low by processing everything in your browser (client-side), which means we do not need expensive server infrastructure. We believe career tools should be accessible to everyone regardless of financial situation.',
+      },
+      {
+        question: 'Do I need to create an account to use NextFolios?',
+        answer: 'No. NextFolios does not require any form of registration, login, or account creation. Simply visit the tool you want to use and start immediately. Your data stays in your browser and is never sent to our servers.',
+      },
+    ],
+  },
+  {
+    name: 'ATS & Resume',
+    icon: '📄',
+    items: [
+      {
+        question: 'How does the ATS Resume Checker work?',
+        answer: 'Our ATS Resume Checker parses your resume file directly in your browser, simulating how real Applicant Tracking Systems read and score documents. It analyzes formatting, keyword density, section structure, contact information, and overall readability to produce a compatibility score with specific improvement suggestions for each section.',
+      },
+      {
+        question: 'Is my resume uploaded to your servers?',
+        answer: 'No. Your resume file is processed entirely within your web browser using client-side JavaScript. The file never leaves your device, and we never see, store, or transmit your resume data. This is a core privacy guarantee of our platform.',
+      },
+      {
+        question: 'What file formats does the ATS checker support?',
+        answer: 'The ATS Resume Checker currently supports PDF files, which is the most widely accepted resume format by both ATS systems and recruiters. We recommend using a standard single-column PDF exported from a word processor for the most accurate results.',
+      },
+    ],
+  },
+  {
+    name: 'Portfolio',
+    icon: '🎨',
+    items: [
+      {
+        question: 'Can I host the generated portfolio on my own domain?',
+        answer: 'Yes. The Portfolio Generator creates static HTML, CSS, and JavaScript files that you can download and deploy to any hosting service — including GitHub Pages, Netlify, Vercel, Cloudflare Pages, or your own web server. The generated code is yours to customize and use however you want.',
+      },
+      {
+        question: 'Do I need coding skills to use the Portfolio Generator?',
+        answer: 'Not at all. The Portfolio Generator uses a visual interface where you fill in your information, choose a theme, and customize colors and layout. Everything is point-and-click. However, if you do know HTML and CSS, you can further customize the exported files after downloading them.',
+      },
+    ],
+  },
+  {
+    name: 'Salary',
+    icon: '💰',
+    items: [
+      {
+        question: 'Where does the salary data come from?',
+        answer: 'Our Salary Negotiation Toolkit uses publicly available compensation data aggregated from government labor statistics, industry surveys, and anonymized self-reported salary databases. The benchmarks are updated regularly to reflect current market conditions and are intended as directional guidance, not exact predictions.',
+      },
+      {
+        question: 'Can the salary toolkit help me negotiate a raise at my current job?',
+        answer: 'Yes. The toolkit is designed for both new job offers and internal raise negotiations. It provides market-rate benchmarks for your role and location, generates talking points customized to your situation, and includes proven negotiation frameworks that work for salary reviews, promotions, and counter-offers.',
+      },
+    ],
+  },
+  {
+    name: 'Interview',
+    icon: '🎤',
+    items: [
+      {
+        question: 'What types of interview questions does the prep coach cover?',
+        answer: 'The Interview Prep Coach covers behavioral questions (using the STAR method), situational judgment questions, technical and role-specific questions, leadership and management questions, and culture fit questions. You can filter by category, difficulty level, and target role to practice the most relevant questions.',
+      },
+      {
+        question: 'Does the interview coach record my answers?',
+        answer: 'No. The Interview Prep Coach does not record audio, video, or text responses. Any notes or answers you type during practice are stored only in your browser\'s local storage and can be cleared at any time. We have no access to your practice session data.',
+      },
+    ],
+  },
+  {
+    name: 'Career & Privacy',
+    icon: '🔒',
+    items: [
+      {
+        question: 'How does NextFolios protect my privacy?',
+        answer: 'Privacy is built into our architecture. All tools process data client-side in your browser — your resumes, salary data, portfolio content, and interview responses never leave your device. We do not use tracking cookies for advertising, we do not sell data, and we do not require personal information to use any tool. Read our full Privacy Policy for details.',
+      },
+      {
+        question: 'Can I use NextFolios on mobile devices?',
+        answer: 'Yes. NextFolios is fully responsive and works on smartphones and tablets. All tools function on modern mobile browsers including Chrome, Safari, Firefox, and Edge. For the best experience with document-heavy tools like the ATS checker, we recommend using a tablet or desktop.',
+      },
+      {
+        question: 'Will NextFolios add more tools in the future?',
+        answer: 'Yes. We are actively developing new tools based on community feedback. Upcoming features on our roadmap include an AI-powered career roadmap planner, LinkedIn profile optimizer, cover letter generator, and networking tracker. We prioritize features that address the most common pain points reported by our users.',
+      },
+      {
+        question: 'How can I report a bug or request a feature?',
+        answer: 'You can report bugs or suggest features through our Contact page, by emailing hello@nextfolios.com, or by opening an issue on our GitHub repository. We review all submissions weekly and prioritize based on user impact and technical feasibility.',
+      },
+    ],
+  },
+];
+
+// Flatten all items for the FAQ schema
+const allItems = categories.flatMap((cat) => cat.items);
+
+const faqSchemaItems = allItems.map((item) => ({
+  q: item.question,
+  a: item.answer,
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'FAQ — NextFolios',
+  description: 'Frequently asked questions about NextFolios career tools.',
+  url: 'https://nextfolios.com/faq',
+};
+---
+
+<BaseLayout>
+  <SEOHead
+    slot="head"
+    title="FAQ - Frequently Asked Questions - NextFolios"
+    description="Find answers to common questions about NextFolios career tools — the ATS Resume Checker, Portfolio Generator, Salary Negotiation Toolkit, Interview Prep Coach, privacy, pricing, and more."
+    schema={schema}
+    faq={faqSchemaItems}
+  />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-32 pb-16">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-[var(--color-accent-cyan)] rounded-full opacity-5 blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[var(--color-accent-purple)] rounded-full opacity-5 blur-3xl"></div>
+      </div>
+
+      <div class="section-container relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <span class="badge mb-6">Support</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
+            Frequently Asked <span class="gradient-text">Questions</span>
+          </h1>
+          <p class="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto leading-relaxed mb-10">
+            Everything you need to know about NextFolios, our tools, privacy practices, and more. Can't find your answer? <a href="/contact" class="text-[var(--color-text-accent)] hover:underline">Contact us</a>.
+          </p>
+
+          <!-- Search Bar -->
+          <div class="max-w-xl mx-auto relative">
+            <label for="faq-search-input" class="sr-only">Search frequently asked questions</label>
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" aria-hidden="true">
+              <svg class="w-5 h-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="faq-search-input"
+              placeholder="Search questions..."
+              class="w-full pl-12 pr-4 py-3.5 bg-[var(--color-bg-tertiary)] border border-[var(--color-border-default)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-accent-blue)] focus:ring-1 focus:ring-[var(--color-accent-blue)] transition-colors duration-200 text-base"
+            />
+            <p id="faq-search-count" class="text-[var(--color-text-muted)] text-sm mt-3 hidden"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-16" id="faq-categories">
+      <div class="section-container">
+        <div class="max-w-3xl mx-auto">
+
+          <!-- No Results Message -->
+          <div id="faq-no-results" class="hidden text-center py-16">
+            <div class="text-5xl mb-4" aria-hidden="true">🔍</div>
+            <h2 class="text-xl font-semibold text-[var(--color-text-primary)] mb-2">No matching questions found</h2>
+            <p class="text-[var(--color-text-secondary)]">
+              Try a different search term or <a href="/contact" class="text-[var(--color-text-accent)] hover:underline">contact us</a> with your question.
+            </p>
+          </div>
+
+          <!-- Categories -->
+          <div id="faq-list" class="space-y-12">
+            {categories.map((category) => (
+              <div class="faq-category" data-category={category.name}>
+                <h2 class="text-xl font-bold text-[var(--color-text-primary)] mb-5 flex items-center gap-3">
+                  <span class="text-2xl" aria-hidden="true">{category.icon}</span>
+                  {category.name}
+                </h2>
+
+                <div class="space-y-3">
+                  {category.items.map((item) => (
+                    <details
+                      class="faq-item group bg-[var(--color-bg-card)] border border-[var(--color-border-default)] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[var(--color-border-hover)]"
+                      data-question={item.question.toLowerCase()}
+                      data-answer={item.answer.toLowerCase()}
+                    >
+                      <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-[var(--color-text-primary)] font-medium text-base select-none list-none [&::-webkit-details-marker]:hidden">
+                        <span class="pr-4">{item.question}</span>
+                        <span class="shrink-0 text-[var(--color-text-muted)] transition-transform duration-300 group-open:rotate-45 text-2xl leading-none" aria-hidden="true">
+                          +
+                        </span>
+                      </summary>
+                      <div class="px-6 pb-5 text-[var(--color-text-secondary)] leading-relaxed border-t border-[var(--color-border-default)] pt-4">
+                        {item.answer}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Still Have Questions -->
+    <section class="py-16 bg-[var(--color-bg-secondary)]" id="faq-contact-cta">
+      <div class="section-container">
+        <div class="max-w-2xl mx-auto text-center">
+          <div class="text-4xl mb-4" aria-hidden="true">💬</div>
+          <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Still have questions?</h2>
+          <p class="text-[var(--color-text-secondary)] mb-8 leading-relaxed">
+            We are happy to help with anything not covered here. Whether it is a technical issue, a feature idea, or just a question about how something works, reach out and we will get back to you within 48 hours.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/contact" class="btn-primary">
+              Contact Us
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="mailto:hello@nextfolios.com" class="btn-secondary">
+              Email Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('faq-search-input') as HTMLInputElement | null;
+    const searchCount = document.getElementById('faq-search-count');
+    const noResults = document.getElementById('faq-no-results');
+    const faqList = document.getElementById('faq-list');
+
+    if (!searchInput || !searchCount || !noResults || !faqList) return;
+
+    const categories = faqList.querySelectorAll('.faq-category');
+    const allItems = faqList.querySelectorAll('.faq-item');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+
+      if (!query) {
+        // Show everything
+        allItems.forEach((item) => {
+          (item as HTMLElement).style.display = '';
+        });
+        categories.forEach((cat) => {
+          (cat as HTMLElement).style.display = '';
+        });
+        noResults.classList.add('hidden');
+        searchCount.classList.add('hidden');
+        return;
+      }
+
+      let visibleCount = 0;
+
+      categories.forEach((cat) => {
+        const items = cat.querySelectorAll('.faq-item');
+        let catHasVisible = false;
+
+        items.forEach((item) => {
+          const el = item as HTMLElement;
+          const question = el.dataset.question || '';
+          const answer = el.dataset.answer || '';
+          const matches = question.includes(query) || answer.includes(query);
+
+          el.style.display = matches ? '' : 'none';
+          if (matches) {
+            catHasVisible = true;
+            visibleCount++;
+          }
+        });
+
+        (cat as HTMLElement).style.display = catHasVisible ? '' : 'none';
+      });
+
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+        searchCount.classList.add('hidden');
+      } else {
+        noResults.classList.add('hidden');
+        searchCount.classList.remove('hidden');
+        searchCount.textContent = `${visibleCount} question${visibleCount === 1 ? '' : 's'} found`;
+      }
+    });
+  });
+</script>

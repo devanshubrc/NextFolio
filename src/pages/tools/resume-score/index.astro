@@ -1,0 +1,144 @@
+---
+/**
+ * index.astro — Resume Score Tool Page
+ * Implements standard tool layout and 1000-1500 words of educational content
+ */
+import ToolLayout from '../../../layouts/ToolLayout.astro';
+import ResumeScore from '../../../components/react/tools/ResumeScore';
+
+const toolName = 'Resume Score';
+const toolSlug = 'resume-score';
+const toolCategory = 'Resume Optimization';
+const toolIcon = '📊';
+const pageTitle = 'Free Resume Score Checker & Analyzer - NextFolios';
+const pageDescription = 'Get an instant quality score for your resume. Analyze sections, layout, contact info completeness, keyword density, and quantifiable impact statements locally in your browser.';
+
+// 1. How It Works (HTML content, 400+ words)
+const howItWorks = `
+  <div class="space-y-6">
+    <p>Your resume represents your professional story in a document. To understand its quality, our scoring engine evaluates your resume against four key dimensions that recruiters look for:</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 my-8">
+      <div class="p-4 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-base mb-1 text-[var(--color-text-accent)]">Content & Sections</h4>
+        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">Verifies the presence and completeness of core sections: Experience, Skills, Education, Projects, and Summary.</p>
+      </div>
+      <div class="p-4 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-base mb-1 text-[var(--color-text-accent)]">Formatting Checks</h4>
+        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">Analyzes total word count, contact details presence, and visual readability parameters.</p>
+      </div>
+      <div class="p-4 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-base mb-1 text-[var(--color-text-accent)]">Keyword Density</h4>
+        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">Matches your text against critical industry-specific terms, active verbs, and core soft skills.</p>
+      </div>
+      <div class="p-4 rounded-xl border border-[var(--color-border-default)] bg-[var(--color-bg-primary)]">
+        <h4 class="font-bold text-base mb-1 text-[var(--color-text-accent)]">Impact & Metrics</h4>
+        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">Scans for numbers, percentages, budget details, and outcome metrics to quantify results.</p>
+      </div>
+    </div>
+
+    <p>When you select a target role and upload your PDF, the parser processes the document completely client-side in the browser. It splits the document text, extracts the taxonomy parameters, and passes them to our scoring engine. The overall quality score is calculated as a weighted average: Content (35%), Keywords (25%), Formatting (20%), and Impact (20%).</p>
+    
+    <p>By breaking down your score into distinct categories, you can pinpoint exactly what is holding your resume back. A detailed scorecard provides direct actions on how to rephrase bullet points or fix formatting errors.</p>
+  </div>
+`;
+
+// 2. Benefits (HTML content, 400+ words)
+const benefits = `
+  <div class="space-y-6">
+    <p>Recruiters spend an average of only 6 seconds reviewing a resume before deciding if a candidate is worth interviewing. In that short window, your resume must make a flawless first impression. Utilizing a detailed resume analyzer offers several benefits:</p>
+    
+    <ul class="list-disc pl-6 space-y-3 text-[var(--color-text-secondary)]">
+      <li><strong>Immediate Objective Feedback:</strong> It is hard to grade your own writing. Our analyzer gives you an unbiased, objective score based on recruiter guidelines and automated parser standards.</li>
+      <li><strong>Identify Hidden Formatting Gaps:</strong> A resume might look beautiful to your eyes, but if it has hidden text frames or is missing contact tags, a parser might read it as a blank sheet. The score checks text parsing reliability.</li>
+      <li><strong>Actionable Optimization Roadmap:</strong> Rather than rewrite everything from scratch, follow our priority checklist to fix missing contact details, add missing keywords, and rewrite passive bullet points.</li>
+      <li><strong>100% Free & Private:</strong> NextFolios doesn't track or sell your data. We do not require registration or credit cards, and we perform all analysis locally on your machine.</li>
+    </ul>
+
+    <p>A high quality score guarantees that your resume is both readable by algorithms and highly compelling for hiring managers, maximizing your chances of moving forward in the pipeline.</p>
+  </div>
+`;
+
+// 3. Tips (HTML content, 450+ words)
+const tips = `
+  <div class="space-y-6">
+    <p>Improving your quality score is about shifting from listing tasks to demonstrating accomplishments. Follow these top tips to elevate your scorecard:</p>
+    
+    <div class="space-y-4">
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Utilize the STAR Method</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Structure your experience bullet points using the STAR method: Situation, Task, Action, and Result. Make sure every bullet point describes a specific action you took and the positive outcome it created.</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Quantify Wherever Possible</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Numbers catch the eye. Instead of writing "Responsible for managing projects," write "Managed 4 cross-functional software projects with a budget of $50k, delivering all milestones 2 weeks ahead of schedule."</p>
+      </div>
+      
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Focus on Action, Not Duties</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Replace passive wording like "Worked on development team" with "Collaborated with 6 developer team members to build core UI API modules". Starting with strong, proactive verbs elevates your impact score.</p>
+      </div>
+
+      <div class="border-l-4 border-[var(--color-text-accent)] pl-4 py-1">
+        <h4 class="font-bold text-base text-[var(--color-text-primary)]">Optimize the Top Fold</h4>
+        <p class="text-sm text-[var(--color-text-secondary)] mt-1">Put your most compelling projects, skills, and experience details in the top third of your resume. This is the section most likely to be scanned first by recruiters and matched by initial algorithmic loops.</p>
+      </div>
+    </div>
+  </div>
+`;
+
+// 4. FAQ Items (8-10 items with structured answers)
+const faqItems = [
+  {
+    question: 'What is a good resume score?',
+    answer: 'An overall quality score of 80% or above is considered excellent. This indicates your resume has clear formatting, contains all essential sections, utilizes keywords effectively, and contains quantified outcomes that demonstrate value to employers.',
+  },
+  {
+    question: 'How is this tool different from the ATS Resume Checker?',
+    answer: 'While the ATS Resume Checker focuses heavily on keyword matching and file readability constraints for automated search filters, the Resume Score tool evaluates overall readability, contact completeness, checklist criteria, and outcome metrics to prepare you for human reviews.',
+  },
+  {
+    question: 'Is my resume file stored on NextFolios servers?',
+    answer: 'No. All PDF reading and evaluation occur locally in your browser. NextFolios does not upload your files, store data, or share personal details, ensuring absolute privacy for your career search.',
+  },
+  {
+    question: 'Can I check my resume multiple times?',
+    answer: 'Yes, you can check your resume as many times as you like. We recommend tweaking your content based on our scorecard tips and uploading the updated file to see your score improve in real time.',
+  },
+  {
+    question: 'How do I add quantifiable metrics if I work in a non-numeric role?',
+    answer: 'Every job has metrics. Think about: frequency (how often you perform a task), quantity (how many items you manage), time (how fast you deliver), team size (how many people you collaborate with), or customer satisfaction ratings.',
+  },
+  {
+    question: 'Should I include a photo on my resume?',
+    answer: 'For jobs in the US, Canada, UK, and Australia, you should not include a photo. Doing so can cause compliance issues with anti-discrimination laws, and many automated ATS parsers reject resumes with photos automatically.',
+  },
+  {
+    question: 'What font size should I use for sections?',
+    answer: 'Use 10-12pt for body text and 14-16pt for section headings. Maintain a clear typography hierarchy so the document is easy to read.',
+  },
+  {
+    question: 'Why did I get a low score for formatting?',
+    answer: 'Common causes of low formatting scores are having less than 300 words (too brief), exceeding 1000 words (too verbose), or missing critical contact links like email, phone number, or a LinkedIn URL.'
+  }
+];
+
+const blogTags = ['resume', 'career', 'writing-tips'];
+---
+
+<ToolLayout
+  title={pageTitle}
+  description={pageDescription}
+  toolName={toolName}
+  toolSlug={toolSlug}
+  toolCategory={toolCategory}
+  toolIcon={toolIcon}
+  howItWorks={howItWorks}
+  benefits={benefits}
+  tips={tips}
+  faqItems={faqItems}
+  blogTags={blogTags}
+>
+  <ResumeScore slot="tool" client:load />
+</ToolLayout>
