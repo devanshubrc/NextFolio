@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nextfolios.com/sitemap-index.xml
+Sitemap: https://nextfolios.com/sitemap.xml
