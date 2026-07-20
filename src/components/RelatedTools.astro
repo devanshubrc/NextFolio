@@ -24,15 +24,15 @@ const related = getRelatedTools(currentSlug);
 
 {related.length > 0 && (
   <section class="w-full max-w-5xl mx-auto py-16 px-4">
-    <h2 class="text-2xl font-bold text-white text-center mb-8">
+    <h2 class="text-2xl font-bold text-[var(--color-text-primary)] text-center mb-8">
       Related Tools
     </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {related.map((tool) => (
         <a
-          href={`/${tool.slug}`}
-          class="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 transition-all duration-300 hover:border-slate-600/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/40 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          href={`/tools/${tool.slug}/`}
+          class="group relative card p-6 cursor-pointer focus:ring-2 focus:ring-blue-500 focus:outline-none"
         >
           {/* Gradient accent bar */}
           <div
@@ -45,17 +45,17 @@ const related = getRelatedTools(currentSlug);
           </span>
 
           {/* Title */}
-          <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-200">
+          <h3 class="text-lg font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-text-accent)] transition-colors duration-200">
             {tool.title}
           </h3>
 
           {/* Description */}
-          <p class="text-sm text-slate-400 leading-relaxed">
+          <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">
             {tool.description}
           </p>
 
           {/* Arrow indicator */}
-          <span class="mt-4 inline-flex items-center text-sm font-medium text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span class="mt-4 inline-flex items-center text-sm font-medium text-[var(--color-text-accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             Try it free
             <svg
               class="ml-1.5 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"

@@ -36,23 +36,23 @@ const breadcrumbSchema = {
 ---
 
 <nav aria-label="Breadcrumb" class="w-full max-w-5xl mx-auto px-4 py-4">
-  <ol class="flex items-center flex-wrap gap-1 text-sm text-slate-400">
+  <ol class="flex items-center flex-wrap gap-1 text-sm text-[var(--color-text-muted)]">
     {items.map((item, index) => (
       <li class="flex items-center">
         {index > 0 && (
-          <span class="mx-2 text-slate-600 select-none" aria-hidden="true">
+          <span class="mx-2 text-[var(--color-text-muted)] select-none opacity-60" aria-hidden="true">
             /
           </span>
         )}
         {item.href ? (
           <a
             href={item.href}
-            class="text-slate-400 hover:text-white transition-colors duration-200 underline-offset-4 hover:underline"
+            class="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 underline-offset-4 hover:underline"
           >
             {item.label}
           </a>
         ) : (
-          <span class="text-white font-medium" aria-current="page">
+          <span class="text-[var(--color-text-primary)] font-medium" aria-current="page">
             {item.label}
           </span>
         )}
