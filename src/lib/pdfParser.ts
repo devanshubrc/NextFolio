@@ -13,19 +13,32 @@ export interface ExtractedPDF {
   pages: ExtractedPage[];
 }
 
+let pdfjsLib: any = null;
+
+if (typeof window !== 'undefined') {
+  // Preload in the browser immediately to prevent dynamic fetch errors at run time
+  import('pdfjs-dist/build/pdf.mjs').then(m => {
+    pdfjsLib = m;
+  }).catch(e => console.error("Failed to preload pdfjs-dist", e));
+}
+
 export async function extractTextFromPDF(file: File): Promise<ExtractedPDF> {
   if (typeof window === 'undefined') {
     throw new Error('PDF parsing can only be performed in the browser environment.');
   }
 
-  // Dynamically import pdfjs-dist to avoid SSR compilation issues
-  const pdfjs = await import('pdfjs-dist');
+  // Get preloaded library or import fallback
+  let pdfjs = pdfjsLib;
+  if (!pdfjs) {
+    pdfjs = await import('pdfjs-dist/build/pdf.mjs');
+  }
   
   // Set the worker source pointing to the CDN matching the package version (5.6.205)
   pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version || '5.6.205'}/build/pdf.worker.min.mjs`;
 
   const arrayBuffer = await file.arrayBuffer();
-  const loadingTask = pdfjs.getDocument({ data: arrayBuffer });
+  const typedArray = new Uint8Array(arrayBuffer);
+  const loadingTask = pdfjs.getDocument({ data: typedArray });
   const pdf = await loadingTask.promise;
 
   const pages: ExtractedPage[] = [];
